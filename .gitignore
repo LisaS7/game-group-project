@@ -1,0 +1,10 @@
+# dependencies
+*/node_modules
+
+# testing
+client/coverage
+client/cypress/videos
+client/cypress/screenshots
+
+# production
+client/build
