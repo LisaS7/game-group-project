@@ -8,12 +8,12 @@ export default function Answer({ correct, incorrect, questionAnswered }) {
   };
 
   incorrect.push(correct);
-  const allAnswers = shuffle(incorrect);
+  const allAnswers = shuffle([...new Set(incorrect)]);
   const answerElements = allAnswers.map((answer, index) => (
     <button onClick={handleAnswer} key={index}>
       {answer}
     </button>
   ));
 
-  return <div>{answerElements}</div>;
+  return <div className="answers-container">{answerElements}</div>;
 }
