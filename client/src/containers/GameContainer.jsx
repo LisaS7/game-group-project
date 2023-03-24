@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import QuizContainer from "./QuizContainer";
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
@@ -24,5 +25,13 @@ export default function GameContainer() {
     </p>
   ));
 
-  return <div>{dataElements}</div>;
+  console.log("game container", data);
+
+  if (!data.length) return "loading...";
+
+  return (
+    <div>
+      <QuizContainer data={data} />
+    </div>
+  );
 }
