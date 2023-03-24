@@ -1,1 +1,1 @@
-export const answerDelay = 500;
+export const answerDelay = 2000;

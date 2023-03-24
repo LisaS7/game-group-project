@@ -6,6 +6,7 @@ import { answerDelay } from "../constants";
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -15,12 +16,17 @@ export default function QuizContainer({ data }) {
     }, answerDelay);
   }
 
+  function correctAnswer() {
+    setIsCorrect(true);
+  }
+
   useEffect(() => {
     setQuestions(data);
   }, [data]);
 
   useEffect(() => {
     setDisplayAnswer(false);
+    setIsCorrect(false);
   }, [questions]);
 
   if (!questions.length) return "Loading...";
@@ -37,6 +43,8 @@ export default function QuizContainer({ data }) {
         correct={questions[0].correctAnswer}
         incorrect={questions[0].incorrectAnswers}
         questionAnswered={questionAnswered}
+        correctAnswer={correctAnswer}
+        isCorrect={isCorrect}
       />
     </div>
   );

@@ -1,3 +1,14 @@
 button {
     margin: 1rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.answers-container {
+    display: flex;
+    justify-content: center;
+}
+
+.correct {
+    background-color: green;
 }

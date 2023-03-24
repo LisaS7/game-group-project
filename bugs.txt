@@ -1,0 +1,2 @@
+array.push creates duplicate answers on re-render - convert array to set then back to array
+answers shuffle on rerender
