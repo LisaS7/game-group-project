@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { answerDelay } from "../constants";
-import { shuffle } from "../utils/shuffle";
 
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
