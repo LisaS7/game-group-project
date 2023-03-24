@@ -1,5 +1,4 @@
 export function shuffle(array) {
-  console.log("shuffle array", array);
   const newArray = [...array];
   const length = newArray.length;
 

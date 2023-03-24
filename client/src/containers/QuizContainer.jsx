@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { answerDelay } from "../constants";
+import { shuffle } from "../utils/shuffle";
 
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
@@ -31,6 +32,10 @@ export default function QuizContainer({ data }) {
 
   if (!questions.length) return "Loading...";
 
+  const incorrectAnswers = questions[0].incorrectAnswers;
+  incorrectAnswers.push(questions[0].correctAnswer);
+  const allAnswers = [...new Set(incorrectAnswers)].sort();
+
   return (
     <div>
       {displayAnswer ? (
@@ -41,7 +46,7 @@ export default function QuizContainer({ data }) {
 
       <Answer
         correct={questions[0].correctAnswer}
-        incorrect={questions[0].incorrectAnswers}
+        allAnswers={allAnswers}
         questionAnswered={questionAnswered}
         correctAnswer={correctAnswer}
         isCorrect={isCorrect}

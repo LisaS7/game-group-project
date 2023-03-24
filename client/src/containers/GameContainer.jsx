@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { shuffle } from "../utils/shuffle";
 import QuizContainer from "./QuizContainer";
 
 export default function GameContainer() {
