@@ -5,13 +5,15 @@ import Question from "../components/Question";
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
 
-  console.log("quiz container 1", data);
+  function questionAnswered() {
+    const questionsCopy = [...questions];
+    setQuestions(questionsCopy.slice(1));
+    console.log("question answered", questions);
+  }
 
   useEffect(() => {
     setQuestions(data);
   }, [data]);
-
-  console.log("quiz container 2", questions);
 
   if (!questions.length) return "Loading...";
 
@@ -21,6 +23,7 @@ export default function QuizContainer({ data }) {
       <Answer
         correct={questions[0].correctAnswer}
         incorrect={questions[0].incorrectAnswers}
+        questionAnswered={questionAnswered}
       />
     </div>
   );

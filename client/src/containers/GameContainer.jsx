@@ -19,14 +19,6 @@ export default function GameContainer() {
     getData();
   }, []);
 
-  const dataElements = data.map((item, index) => (
-    <p>
-      {index + 1} - {item.question}
-    </p>
-  ));
-
-  console.log("game container", data);
-
   if (!data.length) return "loading...";
 
   return (
