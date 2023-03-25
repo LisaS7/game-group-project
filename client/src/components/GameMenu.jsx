@@ -14,9 +14,10 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
 
   const categoryElements = categories.map((category, index) => (
     <button key={index} onClick={(e) => handleClick(e)}>
-      {category}
+      {category.replaceAll('_', ' ')}
     </button>
   ));
+
 
   const difficultyElements = difficulties.map((difficulty, index) => (
     <button key={index} onClick={(e) => setDifficulty(e.target.textContent)}>
