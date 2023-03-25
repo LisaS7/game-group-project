@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Answer from "../components/Answer";
+// import Highscore from "../components/Highscore";
 import Question from "../components/Question";
+import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
+
+
 
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [highscores, setHighscores] = useState([])
+  const [score, setScore] = useState(0)
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -17,8 +23,12 @@ export default function QuizContainer({ data }) {
   }
 
   function correctAnswer() {
-    setIsCorrect(true);
+   setIsCorrect(true);
+   // add points to score
+   setScore(score + 1)
+   // post new score to db (waiting on function for game ending)
   }
+
 
   useEffect(() => {
     setQuestions(data);
@@ -29,6 +39,15 @@ export default function QuizContainer({ data }) {
     setIsCorrect(false);
   }, [questions]);
 
+
+  useEffect(()=>{
+    getHighscores().then((allHighscores)=>{
+    setHighscores(allHighscores);
+    })
+}, []);
+
+const highestScore = Math.max.apply(Math, highscores.map(score => score.highscore))
+
   if (!questions.length) return "Loading...";
 
   const incorrectAnswers = questions[0].incorrectAnswers;
@@ -36,6 +55,12 @@ export default function QuizContainer({ data }) {
   const allAnswers = [...new Set(incorrectAnswers)].sort();
 
   return (
+    <>
+    <div>
+      <p>Highscore {highestScore}</p>
+      <p>Score {score}</p>
+    </div>
+
     <div>
       {displayAnswer ? (
         <p>Display result here!!</p>
@@ -51,5 +76,6 @@ export default function QuizContainer({ data }) {
         isCorrect={isCorrect}
       />
     </div>
+    </>
   );
 }
