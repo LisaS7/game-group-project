@@ -7,7 +7,7 @@ export default function GameContainer() {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
-  const [startGame, setStartGame] = useState(true);
+  const [startGame, setStartGame] = useState(false);
 
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
