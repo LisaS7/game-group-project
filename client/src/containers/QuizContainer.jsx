@@ -5,6 +5,8 @@ import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import Timer from "../components/Timer";
+
 
 
 
@@ -85,6 +87,10 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
       ) : (
         <Question question={questions[0].question} />
       )}
+
+    <div>
+      <Timer duration={60} /> 
+    </div>
 
       <Answer
         correct={questions[0].correctAnswer}
