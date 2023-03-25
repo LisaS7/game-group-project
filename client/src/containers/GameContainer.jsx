@@ -23,7 +23,6 @@ export default function GameContainer() {
   }, [category]);
 
   if (!data.length) return <Loading />;
-  // return <Loading />;
 
   if (!startGame) {
     return (
@@ -32,6 +31,8 @@ export default function GameContainer() {
           setStartGame={setStartGame}
           setCategory={setCategory}
           setDifficulty={setDifficulty}
+          difficulty={difficulty}
+          category={category}
         />
       </div>
     );
