@@ -20,9 +20,11 @@ const Timer = ({ duration }) => {
 
 
   return (
+    <>
     <div className="timer-bar-container">
       <div className="timer-bar" style={{ width: `${percentageLeft}%` }} />
     </div>
+    </>
   );
 };
 
