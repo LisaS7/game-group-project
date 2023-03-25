@@ -4,7 +4,7 @@ import GameContainer from "./containers/GameContainer";
 function App() {
   return (
     <div className="App">
-      <h1>Quiz</h1>
+      <h1>Mind Blank</h1>
       <GameContainer />
     </div>
   );
