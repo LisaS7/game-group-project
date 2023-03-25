@@ -10,8 +10,8 @@ export default function Answer({
   const handleAnswer = function (e) {
     if (e.target.textContent === correct) {
       correctAnswer();
-      questionAnswered();
     }
+    questionAnswered();
   };
 
   const answerElements = allAnswers.map((answer, index) => (
