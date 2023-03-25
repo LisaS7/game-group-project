@@ -3,8 +3,8 @@ import "./Loading.css";
 
 const spinVariant = {
   animate: {
-    rotate: 360,
-    transition: { duration: 1.75, repeat: Infinity, delay: 0.75 },
+    rotate: 720,
+    transition: { duration: 1.25, repeat: Infinity },
   },
 };
 
