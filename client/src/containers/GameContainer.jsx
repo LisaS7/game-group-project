@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { GameMenu } from "../components/GameMenu";
+import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
-  const [startGame, setStartGame] = useState(false);
+  const [startGame, setStartGame] = useState(true);
 
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
@@ -21,10 +22,8 @@ export default function GameContainer() {
     getData();
   }, [category]);
 
-  if (!data.length) return "loading...";
-
-  console.log(data);
-  console.log("difficulty", difficulty);
+  if (!data.length) return <Loading />;
+  // return <Loading />;
 
   if (!startGame) {
     return (
