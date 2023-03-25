@@ -7,10 +7,13 @@ export default function Answer({
   correctAnswer,
   isCorrect,
 }) {
+  const correctAudio = new Audio("https://www.fesliyanstudios.com/play-mp3/4232");
+
   const handleAnswer = function (e) {
     if (e.target.textContent === correct) {
       correctAnswer();
       questionAnswered();
+      correctAudio.play();
     }
   };
 
