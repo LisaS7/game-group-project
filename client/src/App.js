@@ -19,6 +19,9 @@ function App() {
 
   return (
     <div className="App">
+
+      <h1>Mind Blank</h1>
+
       <GameContainer />
     </div>
   );
