@@ -19,6 +19,7 @@ export default function Answer({
     } else {
       wrongAudio.play();
     }
+    questionAnswered();
   };
 
   const answerElements = allAnswers.map((answer, index) => (

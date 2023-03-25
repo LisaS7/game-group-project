@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { GameMenu } from "../components/GameMenu";
+import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 
 export default function GameContainer() {
@@ -21,10 +22,7 @@ export default function GameContainer() {
     getData();
   }, [category]);
 
-  if (!data.length) return "loading...";
-
-  console.log(data);
-  console.log("difficulty", difficulty);
+  if (!data.length) return <Loading />;
 
   if (!startGame) {
     return (
@@ -33,6 +31,8 @@ export default function GameContainer() {
           setStartGame={setStartGame}
           setCategory={setCategory}
           setDifficulty={setDifficulty}
+          difficulty={difficulty}
+          category={category}
         />
       </div>
     );
