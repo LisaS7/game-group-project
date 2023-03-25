@@ -2,6 +2,7 @@
     width: 110vw;
     height: 110vh;
     background-image: url("./background.jpeg");
+    background-size: cover;
     position: relative;
     display: flex;
     justify-content: center;
@@ -10,13 +11,13 @@
 
 .host {
     position: absolute;
-    bottom: 40px;
+    bottom: 7rem;
 }
 
 .speech-bubble-container {
     position: absolute;
     left: 43vw;
-    top: 3vh;
+    bottom: 40rem;
 }
 
 .speech-bubble {
@@ -31,10 +32,12 @@
     text-align: center;
     font-size:3rem;
     top: 9vh;
-    left: 1vw;
+    left: 2vw;
 }
 
 .intro-button {
+    width: 20rem;
     position: absolute;
-    bottom: 20vh;
+    bottom: 8rem;
+    left: 38vw;
 }

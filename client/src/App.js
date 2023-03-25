@@ -2,12 +2,19 @@ import { useState } from "react";
 import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const [intro, setIntro] = useState(true);
 
   if (intro) {
-    return <Intro setIntro={setIntro} />;
+    return (
+      <div>
+        <AnimatePresence>
+          <Intro setIntro={setIntro} />
+        </AnimatePresence>
+      </div>
+    );
   }
 
   return (

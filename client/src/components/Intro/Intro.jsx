@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import "./intro.css";
 import hostImg from "./host.png";
 import speechBubble from "./speech_bubble.png";
+import starButton from "./star-button.png";
+
+const containerVariants = {};
 
 const hostVariants = {
   initial: { x: "50vw" },
@@ -13,31 +16,38 @@ const speechVariants = {
   animate: { opacity: 1, transition: { duration: 1, delay: 2.5 } },
 };
 
+const buttonVariants = {
+  initial: { opacity: 0, rotate: 360 },
+  animate: { opacity: 1, rotate: 0, transition: { duration: 1, delay: 4 } },
+};
+
 export default function Intro({ setIntro }) {
   return (
-    <div className="intro-container">
+    <motion.div
+      key="container"
+      className="intro-container"
+      initial="initial"
+      animate="animate"
+      variants={containerVariants}
+      exit={{ opacity: 0, transition: { duration: 2 } }}
+    >
       <div className="host-container">
-        <motion.img
-          initial="initial"
-          animate="animate"
-          variants={hostVariants}
-          className="host"
-          src={hostImg}
-        />
+        <motion.img variants={hostVariants} className="host" src={hostImg} />
         <motion.div
           className="speech-bubble-container"
-          initial="initial"
-          animate="animate"
           variants={speechVariants}
         >
           <motion.img className="speech-bubble" src={speechBubble} />
-          <p className="speech-text">Welcome to "quizname"!</p>
+          <p className="speech-text">Welcome to Mind Blank!</p>
         </motion.div>
       </div>
 
-      <button className="intro-button" onClick={() => setIntro(false)}>
-        Let's Go!
-      </button>
-    </div>
+      <motion.img
+        className="intro-button"
+        variants={buttonVariants}
+        src={starButton}
+        onClick={() => setIntro(false)}
+      />
+    </motion.div>
   );
 }
