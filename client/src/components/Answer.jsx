@@ -1,4 +1,10 @@
 import "./Answer.css";
+import { motion } from "framer-motion";
+
+const answersVariant = {
+  initial: { y: "110vh" },
+  animate: { y: 0, transition: { duration: 1.5 } },
+};
 
 export default function Answer({
   correct,
@@ -32,5 +38,14 @@ export default function Answer({
     </button>
   ));
 
-  return <div className="answers-container">{answerElements}</div>;
+  return (
+    <motion.div
+      className="answers-container"
+      variants={answersVariant}
+      initial="initial"
+      animate="animate"
+    >
+      {answerElements}
+    </motion.div>
+  );
 }
