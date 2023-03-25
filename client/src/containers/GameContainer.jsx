@@ -23,8 +23,6 @@ export default function GameContainer() {
 
   if (!data.length) return "loading...";
 
-  console.log(data);
-  console.log("difficulty", difficulty);
 
   if (!startGame) {
     return (
@@ -33,6 +31,8 @@ export default function GameContainer() {
           setStartGame={setStartGame}
           setCategory={setCategory}
           setDifficulty={setDifficulty}
+          difficulty={difficulty}
+          category={category}
         />
       </div>
     );
