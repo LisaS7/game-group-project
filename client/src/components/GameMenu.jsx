@@ -2,7 +2,7 @@ import { useState } from "react";
 import { categories, difficulties } from "../constants";
 let selectedCategories = [];
 
-export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
+export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
 
   const [hiddenCategory, setHiddenCategory] = useState(true)
   const [hiddenDifficulty, setHiddenDifficulty] = useState(true)
@@ -25,17 +25,17 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   ));
 
   const handleHiddenCategory = () => {
-    setHiddenCategory(!hiddenCategory)
-    setHiddenDifficulty(true)
+    setHiddenCategory(!hiddenCategory);
+    setHiddenDifficulty(true);
   }
 
   const handleHiddenDifficulty = () => {
-    setHiddenDifficulty(!hiddenDifficulty)
-    setHiddenCategory(true)
+    setHiddenDifficulty(!hiddenDifficulty);
+    setHiddenCategory(true);
   }
 
   const handleStartGame = () => {
-    setStartGame(true)
+    setStartGame(true);
   }
 
   return (
