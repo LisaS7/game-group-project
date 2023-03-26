@@ -11,7 +11,10 @@ body {
 
 
 .score {
-    font-size:20px;
+    font-size:30px;
+    background-color: #112;
+    border-radius: 6px;
+    padding: 0.8rem;
 }
 
 .quiz-container {
