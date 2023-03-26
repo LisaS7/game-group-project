@@ -1,7 +1,7 @@
-h2 {
+.loading-heading {
     font-size: 4rem;
 }
 
-p {
+.loading-text {
     font-size: 6rem;
 }

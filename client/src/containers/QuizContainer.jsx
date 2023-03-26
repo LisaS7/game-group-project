@@ -78,7 +78,7 @@ export default function QuizContainer({ data }) {
   const numberVariants = {
     initial: { y: 0 },
     correct: {
-      y: [0, -110],
+      y: [0, -96],
       transition: { duration: 0.5, delay: 0.5 },
     },
     incorrect: {
@@ -90,31 +90,27 @@ export default function QuizContainer({ data }) {
     <>
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
-        <p className="score">Score {score}</p>
-        <div className="score-numbers">
-          <motion.p
-            initial="initial"
-            animate={isCorrect ? "correct" : "incorrect"}
-            variants={numberVariants}
-          >
-            {isCorrect ? score - 1 : score}
-          </motion.p>
-          <motion.p
-            initial="initial"
-            animate={isCorrect ? "correct" : "incorrect"}
-            variants={numberVariants}
-          >
-            {isCorrect ? score : ""}
-          </motion.p>
+        <div>
+          Score{" "}
+          <div className="score-numbers">
+            <motion.p
+              className="score"
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score - 1 : score}
+            </motion.p>
+            <motion.p
+              className="score"
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score : ""}
+            </motion.p>
+          </div>
         </div>
-        <motion.span
-          className="score-plus material-symbols-outlined"
-          initial="initial"
-          animate={isCorrect ? "correct" : "incorrect"}
-          variants={variants}
-        >
-          arrow_upward
-        </motion.span>
       </div>
 
       <div className="quiz-container">
