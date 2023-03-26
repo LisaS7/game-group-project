@@ -6,9 +6,15 @@ button {
 
 .answers-container {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    margin-top: 4.5rem;
 }
 
+.answers-container > button {
+    flex: 50%; 
+    
+}
 .correct {
     background-color: green;
 }

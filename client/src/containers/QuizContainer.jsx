@@ -66,7 +66,8 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
       <p className="score">Score {score}</p>
     </div>
 
-    <div>
+    <div className="quiz-container">
+      
       {displayAnswer ? (
         <p>{isCorrect ?  <Player
           autoplay
@@ -86,7 +87,7 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
       ) : (
         <Question question={questions[0].question} />
       )}
-
+  <div className="answer-display">
       <Answer
         correct={questions[0].correctAnswer}
         allAnswers={allAnswers}
@@ -94,6 +95,7 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
         correctAnswer={correctAnswer}
         isCorrect={isCorrect}
       />
+    </div>
     </div>
     </>
   );
