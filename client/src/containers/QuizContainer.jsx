@@ -3,6 +3,8 @@ import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
+import Loading from "../components/Loading";
+
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
@@ -44,12 +46,18 @@ export default function QuizContainer({ data }) {
     });
   }, []);
 
-  const highestScore = Math.max.apply(
-    Math,
-    highscores.map((score) => score.highscore)
-  );
 
-  if (!questions.length) return "Loading...";
+  let highestScore;
+  if (highscores.length) {
+    highestScore = Math.max.apply(
+      Math,
+      highscores.map((score) => score.highscore)
+    );
+  } else {
+    highestScore = 0;
+  }
+
+  if (!questions.length) return <Loading />;
 
   const incorrectAnswers = questions[0].incorrectAnswers;
   incorrectAnswers.push(questions[0].correctAnswer);
@@ -79,6 +87,7 @@ export default function QuizContainer({ data }) {
 
   return (
     <>
+
       <div>
         <p>Highscore {highestScore}</p>
         <p className="score-container">
@@ -151,6 +160,7 @@ export default function QuizContainer({ data }) {
           isCorrect={isCorrect}
         />
       </div>
+
     </>
   );
 }
