@@ -70,15 +70,15 @@ export default function QuizContainer({ data }) {
     <>
       <div>
         <p>Highscore {highestScore}</p>
-        <p>
+        <p className="score-container">
           Score <span>{score}</span>
           <motion.span
-            className="score-plus"
+            className="score-plus material-symbols-outlined"
             initial="initial"
             animate={isCorrect ? "correct" : "incorrect"}
             variants={variants}
           >
-            &nbsp;+
+            arrow_upward
           </motion.span>
         </p>
       </div>

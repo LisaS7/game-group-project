@@ -1,3 +1,11 @@
+.score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .score-plus {
-font-size: 7rem;
+    font-size: 6rem;
+    transform: scale(1, 1.3);
 }
