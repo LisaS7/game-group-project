@@ -1,8 +1,8 @@
-body {
+/* body {
     background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
     background-size:cover;
     height: 100vh;
-}
+} */
 
 .scores-container {
     display: flex;
@@ -20,5 +20,5 @@ body {
 .quiz-container {
     width: 800px;
     margin: 0 auto;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }

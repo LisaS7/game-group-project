@@ -73,14 +73,14 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
           autoplay
           speed="1"
           src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
-          style={{ height: '200px', width: '200px' }}
+          style={{ height: '150px', width: '150px'}}
       >
               <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
           </Player>: <Player
           autoplay
           speed="1"
           src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
-          style={{ height: '200px', width: '200px' }}
+          style={{ height: '150px', width: '150px' }}
       >
               <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
           </Player>}</p>

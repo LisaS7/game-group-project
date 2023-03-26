@@ -4,21 +4,16 @@ button {
     font-size: 1.2rem;
 }
 
-.correct {
-    background-image: linear-gradient(to right, #21894b, #21894b);
-}
-
 .answers-container {
     display: flex;
     /* justify-content: center; */
     flex-wrap: wrap;
-    margin-top: 4.5rem;
+    margin-top: 2rem;
 }
 
 .answers-container > button {
-    flex: 50%; 
+    flex: 50% ; 
     margin-bottom: 2rem;
-    width:auto;
 }
 
 .answers-container > button:hover {
@@ -33,7 +28,7 @@ button {
     background-image:  linear-gradient(to right, #89216B, #DA4453);
     color: #fff;
     cursor: pointer;
-    height: 48px;
+    height: 63px;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 19px;
     line-height: 1;
@@ -49,7 +44,7 @@ button {
     background-image: linear-gradient(to right, #21894b, #21894b);
     color: #fff;
     cursor: pointer;
-    height: 48px;
+    height: 63px;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 19px;
     line-height: 1;
