@@ -48,7 +48,6 @@ export default function QuizContainer({ data }) {
     });
   }, []);
 
-
   let highestScore;
   if (highscores.length) {
     highestScore = Math.max.apply(
@@ -89,70 +88,77 @@ export default function QuizContainer({ data }) {
 
   return (
     <>
-    <div className="scores-container">
-      <p className="score">Highscore {highestScore}</p>
-      <p className="score">Score {score}</p>
-       <div className="score-numbers">
-            <motion.p
-              initial="initial"
-              animate={isCorrect ? "correct" : "incorrect"}
-              variants={numberVariants}
-            >
-              {isCorrect ? score - 1 : score}
-            </motion.p>
-            <motion.p
-              initial="initial"
-              animate={isCorrect ? "correct" : "incorrect"}
-              variants={numberVariants}
-            >
-              {isCorrect ? score : ""}
-            </motion.p>
-          </div>
-          <motion.span
-            className="score-plus material-symbols-outlined"
+      <div className="scores-container">
+        <p className="score">Highscore {highestScore}</p>
+        <p className="score">Score {score}</p>
+        <div className="score-numbers">
+          <motion.p
             initial="initial"
             animate={isCorrect ? "correct" : "incorrect"}
-            variants={variants}
+            variants={numberVariants}
           >
-            arrow_upward
-          </motion.span>
-        </p>
+            {isCorrect ? score - 1 : score}
+          </motion.p>
+          <motion.p
+            initial="initial"
+            animate={isCorrect ? "correct" : "incorrect"}
+            variants={numberVariants}
+          >
+            {isCorrect ? score : ""}
+          </motion.p>
+        </div>
+        <motion.span
+          className="score-plus material-symbols-outlined"
+          initial="initial"
+          animate={isCorrect ? "correct" : "incorrect"}
+          variants={variants}
+        >
+          arrow_upward
+        </motion.span>
       </div>
-    </div>
 
-    <div className="quiz-container">
-      
-      {displayAnswer ? (
-        <p>{isCorrect ?  <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
-          style={{ height: '150px', width: '150px'}}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>: <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
-          style={{ height: '150px', width: '150px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>}</p>
-      ) : (
-        <Question question={questions[0].question} />
-      )}
-  <div className="answer-display">
-      <Answer
-        correct={questions[0].correctAnswer}
-        allAnswers={allAnswers}
-        questionAnswered={questionAnswered}
-        correctAnswer={correctAnswer}
-        isCorrect={isCorrect}
-      />
-    </div>
-    </div>
-
-
+      <div className="quiz-container">
+        {displayAnswer ? (
+          <p>
+            {isCorrect ? (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
+                style={{ height: "150px", width: "150px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            ) : (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
+                style={{ height: "150px", width: "150px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            )}
+          </p>
+        ) : (
+          <Question question={questions[0].question} />
+        )}
+        <div className="answer-display">
+          <Answer
+            correct={questions[0].correctAnswer}
+            allAnswers={allAnswers}
+            questionAnswered={questionAnswered}
+            correctAnswer={correctAnswer}
+            isCorrect={isCorrect}
+          />
+        </div>
+      </div>
     </>
   );
 }
