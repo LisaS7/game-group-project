@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Answer from "../components/Answer";
-// import Highscore from "../components/Highscore";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
+
+import Loading from "../components/Loading";
+
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 
@@ -12,8 +14,8 @@ export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [highscores, setHighscores] = useState([])
-  const [score, setScore] = useState(0)
+  const [highscores, setHighscores] = useState([]);
+  const [score, setScore] = useState(0);
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -25,12 +27,11 @@ export default function QuizContainer({ data }) {
 
 
   function correctAnswer() {
-   setIsCorrect(true);
-   // add points to score
-   setScore(score + 1)
-   // post new score to db (waiting on function for game ending)
+    setIsCorrect(true);
+    // add points to score
+    setScore(score + 1);
+    // post new score to db (waiting on function for game ending)
   }
-
 
   useEffect(() => {
     setQuestions(data);
@@ -41,16 +42,23 @@ export default function QuizContainer({ data }) {
     setIsCorrect(false);
   }, [questions]);
 
+  useEffect(() => {
+    getHighscores().then((allHighscores) => {
+      setHighscores(allHighscores);
+    });
+  }, []);
 
-  useEffect(()=>{
-    getHighscores().then((allHighscores)=>{
-    setHighscores(allHighscores);
-    })
-}, []);
+  let highestScore;
+  if (highscores.length) {
+    highestScore = Math.max.apply(
+      Math,
+      highscores.map((score) => score.highscore)
+    );
+  } else {
+    highestScore = 0;
+  }
 
-const highestScore = Math.max.apply(Math, highscores.map(score => score.highscore))
-
-  if (!questions.length) return "Loading...";
+  if (!questions.length) return <Loading />;
 
   const incorrectAnswers = questions[0].incorrectAnswers;
   incorrectAnswers.push(questions[0].correctAnswer);
@@ -60,6 +68,7 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
 
   return (
     <>
+
     <div>
       <p>Highscore {highestScore}</p>
       <p>Score {score}</p>
@@ -94,6 +103,7 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
         isCorrect={isCorrect}
       />
     </div>
+
     </>
   );
 }

@@ -1,0 +1,43 @@
+.intro-container {
+    width: 110vw;
+    height: 110vh;
+    background-image: url("./background.jpeg");
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.host {
+    position: absolute;
+    bottom: 7rem;
+}
+
+.speech-bubble-container {
+    position: absolute;
+    left: 43vw;
+    bottom: 40rem;
+}
+
+.speech-bubble {
+    width: 20vw;
+}
+
+.speech-text{
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 15vw;
+    text-align: center;
+    font-size:3rem;
+    top: 9vh;
+    left: 2vw;
+}
+
+.intro-button {
+    width: 20rem;
+    position: absolute;
+    bottom: 8rem;
+    left: 38vw;
+}

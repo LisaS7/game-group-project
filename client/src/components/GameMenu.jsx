@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { categories, difficulties} from "../constants";
+import { categories, difficulties } from "../constants";
 import "./GameMenu.css";
+import { Capitalise } from "../utils/capitalise";
 let selectedCategories = [];
 
-export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
-
-  const [hiddenCategory, setHiddenCategory] = useState(true)
-  const [hiddenDifficulty, setHiddenDifficulty] = useState(true)
-  
+export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
+  const [hiddenCategory, setHiddenCategory] = useState(true);
+  const [hiddenDifficulty, setHiddenDifficulty] = useState(true);
 
   function handleClick(e) {
     selectedCategories.push(e.target.textContent);
@@ -18,14 +17,13 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
 
   const categoryElements = categories.map((category, index) => (
     <button className="btn-color btn-category" key={index} onClick={(e) => handleClick(e)}>
-      {category.replaceAll('_', ' ')}
+      {Capitalise(category.replaceAll('_', ' '))}
     </button>
   ));
 
-
   const difficultyElements = difficulties.map((difficulty, index) => (
     <button className="btn-color btn-size" key={index} onClick={(e) => setDifficulty((e.target.textContent))}>
-      {difficulty}
+      {Capitalise(difficulty)}
     </button>
   ));
 
@@ -33,19 +31,18 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
   const handleHiddenCategory = () => {
     setHiddenCategory(!hiddenCategory);
     setHiddenDifficulty(true);
-  }
+  };
 
   const handleHiddenDifficulty = () => {
     setHiddenDifficulty(!hiddenDifficulty);
     setHiddenCategory(true);
-  }
+  };
 
   const handleStartGame = () => {
     setStartGame(true);
-  }
+  };
 
   return (
-    
     <div className="btn-container">
       <div>
         <button className="menu-btn btn-size" onClick={handleHiddenCategory}>Select Category</button>
@@ -55,7 +52,6 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
           </div>
         </div>
       </div>
-
       <div>
         <button className="menu-btn btn-size"onClick={handleHiddenDifficulty}>Select Difficulty</button>
         <div hidden={hiddenDifficulty}>
@@ -66,4 +62,3 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
     </div>
   );
 }
-
