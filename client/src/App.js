@@ -4,7 +4,7 @@ import GameContainer from "./containers/GameContainer";
 function App() {
   return (
     <div className="App">
-      <h1>Mind Blank</h1>
+     <div class="logo"><b>M<span>in</span>d<span></span> <span>B</span>lan<span>k</span></b></div>
       <GameContainer />
     </div>
   );
