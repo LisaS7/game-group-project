@@ -30,7 +30,7 @@ export default function Answer({
 
   const answerElements = allAnswers.map((answer, index) => (
     <button
-      className={isCorrect && answer === correct ? "correct" : ""}
+      className={isCorrect && answer === correct ? "correct-answer" : "answer-btn"}
       onClick={(e) => handleAnswer(e)}
       key={index}
     >

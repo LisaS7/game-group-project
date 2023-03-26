@@ -5,8 +5,9 @@
 
 /* LOGO - MIND BLANK */
 @import url(//fonts.googleapis.com/css?family=Vibur);
+
 html,body{
-  height:100%;
+  height: 100vh;
 
 }
 body {
@@ -80,6 +81,7 @@ body {
 
 /* BUTTON - UNIVERSAL */
 
+
 button {
   box-sizing: border-box;
   border: 0;
@@ -95,4 +97,3 @@ button {
   padding-right: 16px;
   transition: box-shadow .15s,transform .15s;
 }
-
