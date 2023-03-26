@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { categories, difficulties } from "../constants";
+import "./GameMenu.css";
 import { Capitalise } from "../utils/capitalise";
 let selectedCategories = [];
 
@@ -12,17 +13,20 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
     setCategory(selectedCategories.join(","));
   }
 
+  // {isCorrect && answer === correct ? "correct" : ""}
+
   const categoryElements = categories.map((category, index) => (
-    <button key={index} onClick={(e) => handleClick(e)}>
-      {Capitalise(category.replaceAll("_", " "))}
+    <button className="btn-color btn-category" key={index} onClick={(e) => handleClick(e)}>
+      {Capitalise(category.replaceAll('_', ' '))}
     </button>
   ));
 
   const difficultyElements = difficulties.map((difficulty, index) => (
-    <button key={index} onClick={(e) => setDifficulty(e.target.textContent)}>
+    <button className="btn-color btn-size" key={index} onClick={(e) => setDifficulty((e.target.textContent))}>
       {Capitalise(difficulty)}
     </button>
   ));
+
 
   const handleHiddenCategory = () => {
     setHiddenCategory(!hiddenCategory);
@@ -39,18 +43,22 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   };
 
   return (
-    <div>
-      <button onClick={handleStartGame}>Start Game!</button>
-
+    <div className="btn-container">
       <div>
-        <button onClick={handleHiddenCategory}>Select Category</button>
-        <div hidden={hiddenCategory}>{categoryElements}</div>
+        <button className="menu-btn btn-size" onClick={handleHiddenCategory}>Select Category</button>
+        <div hidden={hiddenCategory}>
+          <div className="category-container">
+          {categoryElements}
+          </div>
+        </div>
       </div>
-
       <div>
-        <button onClick={handleHiddenDifficulty}>Select Difficulty</button>
-        <div hidden={hiddenDifficulty}>{difficultyElements}</div>
+        <button className="menu-btn btn-size"onClick={handleHiddenDifficulty}>Select Difficulty</button>
+        <div hidden={hiddenDifficulty}>
+          {difficultyElements}
+        </div>
       </div>
+      <button className="start-quiz-btn btn-size" onClick={handleStartGame}>Start Game!</button>
     </div>
   );
 }
