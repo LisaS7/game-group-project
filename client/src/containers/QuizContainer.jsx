@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Answer from "../components/Answer";
+import "./QuizContainer.css";
 // import Highscore from "../components/Highscore";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
@@ -60,9 +61,9 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
 
   return (
     <>
-    <div>
-      <p>Highscore {highestScore}</p>
-      <p>Score {score}</p>
+    <div className="scores-container">
+      <p className="score">Highscore {highestScore}</p>
+      <p className="score">Score {score}</p>
     </div>
 
     <div>
