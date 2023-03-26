@@ -3,6 +3,18 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    overflow:hidden;
+}
+
+.score-numbers {
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden; */
+    height: 7rem;
+}
+
+.score-numbers p {
+    margin: 0
 }
 
 .score-plus {

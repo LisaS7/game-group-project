@@ -66,12 +66,39 @@ export default function QuizContainer({ data }) {
     },
   };
 
+  const numberVariants = {
+    initial: { y: 0 },
+    correct: {
+      y: [0, -110],
+      transition: { duration: 0.5, delay: 0.5 },
+    },
+    incorrect: {
+      y: 0,
+    },
+  };
+
   return (
     <>
       <div>
         <p>Highscore {highestScore}</p>
         <p className="score-container">
-          Score <span>{score}</span>
+          Score{" "}
+          <div className="score-numbers">
+            <motion.p
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score - 1 : score}
+            </motion.p>
+            <motion.p
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score : ""}
+            </motion.p>
+          </div>
           <motion.span
             className="score-plus material-symbols-outlined"
             initial="initial"
