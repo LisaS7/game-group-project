@@ -16,11 +16,6 @@
     margin: 0;
 }
 
-.score-plus {
-    font-size: 6rem;
-    transform: scale(1, 1.3);
-}
-
 .score-numbers {
     display: inline-flex;
     flex-direction: column;
