@@ -1,6 +1,7 @@
 body {
     background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
     background-size:cover;
+    height: 100vh;
 }
 
 .scores-container {
@@ -16,5 +17,5 @@ body {
 .quiz-container {
     width: 800px;
     margin: 0 auto;
-    margin-top: 8rem;
+    margin-top: 3rem;
 }

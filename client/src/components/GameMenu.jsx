@@ -17,14 +17,14 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
   // {isCorrect && answer === correct ? "correct" : ""}
 
   const categoryElements = categories.map((category, index) => (
-    <button className="btn-color btn-category" key={index} onClick={(e) => handleClick(e)}>
+    <button className="menu-btn btn-color btn-category" key={index} onClick={(e) => handleClick(e)}>
       {category.replaceAll('_', ' ')}
     </button>
   ));
 
 
   const difficultyElements = difficulties.map((difficulty, index) => (
-    <button className="btn-color btn-size" key={index} onClick={(e) => setDifficulty((e.target.textContent))}>
+    <button className="menu-btn btn-color btn-size" key={index} onClick={(e) => setDifficulty((e.target.textContent))}>
       {difficulty}
     </button>
   ));

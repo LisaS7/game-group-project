@@ -4,6 +4,10 @@ button {
     font-size: 1.2rem;
 }
 
+.correct {
+    background-image: linear-gradient(to right, #21894b, #21894b);
+}
+
 .answers-container {
     display: flex;
     /* justify-content: center; */
@@ -13,8 +17,42 @@ button {
 
 .answers-container > button {
     flex: 50%; 
-    
+    margin-bottom: 2rem;
+    width:auto;
 }
-.correct {
-    background-color: green;
+
+.answers-container > button:hover {
+    border: #fff solid;
+}
+
+.answer-btn {
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 6px;
+    background-image:  linear-gradient(to right, #89216B, #DA4453);
+    color: #fff;
+    cursor: pointer;
+    height: 48px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 19px;
+    line-height: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+    transition: box-shadow .15s,transform .15s;
+}
+
+.correct-answer {
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #21894b, #21894b);
+    color: #fff;
+    cursor: pointer;
+    height: 48px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 19px;
+    line-height: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+    transition: box-shadow .15s,transform .15s;
 }
