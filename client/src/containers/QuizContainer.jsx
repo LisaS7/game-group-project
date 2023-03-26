@@ -3,12 +3,11 @@ import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
-
 import Loading from "../components/Loading";
 
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
-
-
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { motion } from "framer-motion";
+import "./QuizContainer.css";
 
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
@@ -24,7 +23,6 @@ export default function QuizContainer({ data }) {
       setQuestions(questionsCopy.slice(1));
     }, answerDelay);
   }
-
 
   function correctAnswer() {
     setIsCorrect(true);
@@ -48,6 +46,7 @@ export default function QuizContainer({ data }) {
     });
   }, []);
 
+
   let highestScore;
   if (highscores.length) {
     highestScore = Math.max.apply(
@@ -64,45 +63,103 @@ export default function QuizContainer({ data }) {
   incorrectAnswers.push(questions[0].correctAnswer);
   const allAnswers = [...new Set(incorrectAnswers)].sort();
 
- 
+  const variants = {
+    initial: { opacity: 1 },
+    correct: {
+      opacity: [0, 1, 0],
+      transition: { duration: 1.5, delay: 0.5 },
+    },
+    incorrect: {
+      opacity: 0,
+    },
+  };
+
+  const numberVariants = {
+    initial: { y: 0 },
+    correct: {
+      y: [0, -110],
+      transition: { duration: 0.5, delay: 0.5 },
+    },
+    incorrect: {
+      y: 0,
+    },
+  };
 
   return (
     <>
 
-    <div>
-      <p>Highscore {highestScore}</p>
-      <p>Score {score}</p>
-    </div>
+      <div>
+        <p>Highscore {highestScore}</p>
+        <p className="score-container">
+          Score{" "}
+          <div className="score-numbers">
+            <motion.p
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score - 1 : score}
+            </motion.p>
+            <motion.p
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score : ""}
+            </motion.p>
+          </div>
+          <motion.span
+            className="score-plus material-symbols-outlined"
+            initial="initial"
+            animate={isCorrect ? "correct" : "incorrect"}
+            variants={variants}
+          >
+            arrow_upward
+          </motion.span>
+        </p>
+      </div>
 
-    <div>
-      {displayAnswer ? (
-        <p>{isCorrect ?  <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
-          style={{ height: '200px', width: '200px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>: <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
-          style={{ height: '200px', width: '200px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>}</p>
-      ) : (
-        <Question question={questions[0].question} />
-      )}
+      <div>
+        {displayAnswer ? (
+          <p>
+            {isCorrect ? (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
+                style={{ height: "200px", width: "200px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            ) : (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
+                style={{ height: "200px", width: "200px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            )}
+          </p>
+        ) : (
+          <Question question={questions[0].question} />
+        )}
 
-      <Answer
-        correct={questions[0].correctAnswer}
-        allAnswers={allAnswers}
-        questionAnswered={questionAnswered}
-        correctAnswer={correctAnswer}
-        isCorrect={isCorrect}
-      />
-    </div>
+        <Answer
+          correct={questions[0].correctAnswer}
+          allAnswers={allAnswers}
+          questionAnswered={questionAnswered}
+          correctAnswer={correctAnswer}
+          isCorrect={isCorrect}
+        />
+      </div>
 
     </>
   );
