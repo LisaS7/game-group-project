@@ -25,6 +25,7 @@ button {
     border: #fff solid;
 }
 
+/* need duplication styling with only the background-image changed to fix issue where correct answer was not turing green */
 .answer-btn {
     box-sizing: border-box;
     border: 0;
