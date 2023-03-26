@@ -5,16 +5,18 @@ import "./QuizContainer.css";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import Loading from "../components/Loading";
 
-
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { motion } from "framer-motion";
+import "./QuizContainer.css";
 
 export default function QuizContainer({ data }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [highscores, setHighscores] = useState([])
-  const [score, setScore] = useState(0)
+  const [highscores, setHighscores] = useState([]);
+  const [score, setScore] = useState(0);
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -24,14 +26,12 @@ export default function QuizContainer({ data }) {
     }, answerDelay);
   }
 
-
   function correctAnswer() {
-   setIsCorrect(true);
-   // add points to score
-   setScore(score + 1)
-   // post new score to db (waiting on function for game ending)
+    setIsCorrect(true);
+    // add points to score
+    setScore(score + 1);
+    // post new score to db (waiting on function for game ending)
   }
-
 
   useEffect(() => {
     setQuestions(data);
@@ -42,28 +42,82 @@ export default function QuizContainer({ data }) {
     setIsCorrect(false);
   }, [questions]);
 
+  useEffect(() => {
+    getHighscores().then((allHighscores) => {
+      setHighscores(allHighscores);
+    });
+  }, []);
 
-  useEffect(()=>{
-    getHighscores().then((allHighscores)=>{
-    setHighscores(allHighscores);
-    })
-}, []);
 
-const highestScore = Math.max.apply(Math, highscores.map(score => score.highscore))
+  let highestScore;
+  if (highscores.length) {
+    highestScore = Math.max.apply(
+      Math,
+      highscores.map((score) => score.highscore)
+    );
+  } else {
+    highestScore = 0;
+  }
 
-  if (!questions.length) return "Loading...";
+  if (!questions.length) return <Loading />;
 
   const incorrectAnswers = questions[0].incorrectAnswers;
   incorrectAnswers.push(questions[0].correctAnswer);
   const allAnswers = [...new Set(incorrectAnswers)].sort();
 
- 
+  const variants = {
+    initial: { opacity: 1 },
+    correct: {
+      opacity: [0, 1, 0],
+      transition: { duration: 1.5, delay: 0.5 },
+    },
+    incorrect: {
+      opacity: 0,
+    },
+  };
+
+  const numberVariants = {
+    initial: { y: 0 },
+    correct: {
+      y: [0, -110],
+      transition: { duration: 0.5, delay: 0.5 },
+    },
+    incorrect: {
+      y: 0,
+    },
+  };
 
   return (
     <>
     <div className="scores-container">
       <p className="score">Highscore {highestScore}</p>
       <p className="score">Score {score}</p>
+       <div className="score-numbers">
+            <motion.p
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score - 1 : score}
+            </motion.p>
+            <motion.p
+              initial="initial"
+              animate={isCorrect ? "correct" : "incorrect"}
+              variants={numberVariants}
+            >
+              {isCorrect ? score : ""}
+            </motion.p>
+          </div>
+          <motion.span
+            className="score-plus material-symbols-outlined"
+            initial="initial"
+            animate={isCorrect ? "correct" : "incorrect"}
+            variants={variants}
+          >
+            arrow_upward
+          </motion.span>
+        </p>
+      </div>
     </div>
 
     <div className="quiz-container">
@@ -97,6 +151,8 @@ const highestScore = Math.max.apply(Math, highscores.map(score => score.highscor
       />
     </div>
     </div>
+
+
     </>
   );
 }
