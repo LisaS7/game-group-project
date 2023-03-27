@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import GameEnd from "../components/GameEnd";
 import { GameMenu } from "../components/GameMenu";
-import { Routes, Route } from "react-router-dom";
+
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 
@@ -70,6 +72,7 @@ export default function GameContainer() {
         data={data}
         gameEnded={gameEnded}
         setGameEnded={setGameEnded}
+        setStartGame={setStartGame}
       />
     </div>
   );

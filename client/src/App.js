@@ -20,13 +20,7 @@ function App() {
   return (
     <div className="App">
      <MusicPlayer />
-
-          <Router>
-            <Routes>
-              <Route path="/" element={
-                  <GameContainer />}/>
-          </Routes>
-        </Router>
+        <GameContainer />
     </div>
   );
 

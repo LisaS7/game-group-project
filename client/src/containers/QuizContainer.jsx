@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
@@ -12,12 +12,14 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data, gameEnded, setGameEnded }) {
+export default function QuizContainer({ data, gameEnded, setGameEnded, setStartGame }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
   const [score, setScore] = useState(0);
+
+
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -34,6 +36,9 @@ export default function QuizContainer({ data, gameEnded, setGameEnded }) {
     // post new score to db (waiting on function for game ending)
   }
 
+  function handleReturn () {
+    setStartGame(false)
+  }
   function handleReset() {
     setScore(0);
     setQuestions(data);
@@ -81,14 +86,13 @@ export default function QuizContainer({ data, gameEnded, setGameEnded }) {
     },
   };
 
+
   return (
     <>
       <div>
-        <Link to="/">
-          <button>Return To Menu</button>
-        </Link>
 
-        <button onClick={handleReset}>Reset</button>
+          <button onClick={handleReturn} >Return To Menu</button>
+          <button onClick={handleReset}>Reset</button>
       </div>
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
