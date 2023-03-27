@@ -5,6 +5,10 @@
     height: 100vh;
 } */
 
+.container-for-all {
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
 .scores-container {
     display: flex;
     gap: 5rem;
