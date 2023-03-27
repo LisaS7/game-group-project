@@ -1,15 +1,14 @@
 import React from "react";
 
-const GameEnd = () => {
+export default function GameEnd({ setStartGame }) {
+  function handleClick() {
+    setStartGame(false);
+  }
 
-
-
-
-    return(
-        <h1>Game Over</h1>
-    )
-
-
+  return (
+    <div>
+      <h1>Game Over</h1>
+      <button onClick={() => handleClick()}>Restart</button>
+    </div>
+  );
 }
-
-export default GameEnd;

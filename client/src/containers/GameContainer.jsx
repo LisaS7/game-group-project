@@ -47,7 +47,11 @@ export default function GameContainer() {
   }
 
   if (gameEnded) {
-    return <GameEnd />;
+    return (
+      <div>
+        <GameEnd setStartGame={setStartGame} />
+      </div>
+    );
   }
 
   return (
