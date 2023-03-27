@@ -1,14 +1,22 @@
 import React from "react";
 
-const GameEnd = () => {
 
+import "./GameEnd.css";
+const GameEnd = ({handleGameReset}) => {
 
-
+function handleClick () {
+    handleGameReset(true); 
+    console.log('button clicked')
+}
 
     return(
-        <h1>Game Over</h1>
+        <div className="game-over-container">
+            <div className="game-over"> 
+                <h1>Game Over</h1>
+                <button onClick={handleClick}>Restart Game</button>
+            </div>
+        </div>
     )
-
 
 }
 

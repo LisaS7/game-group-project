@@ -12,6 +12,7 @@ export default function GameContainer() {
   const [difficulty, setDifficulty] = useState("");
   const [startGame, setStartGame] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
+  const [gamereset, setGameReset] = useState(false);
 
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
@@ -25,6 +26,14 @@ export default function GameContainer() {
   useEffect(() => {
     getData();
   }, [category]);
+
+  // useEffect(() => {
+  
+  // }, [gamereset])
+
+  function handleGameReset() {
+    setGameReset(true)
+  }
 
   if (!data.length) return <Loading />;
 
@@ -45,7 +54,13 @@ export default function GameContainer() {
 
   if (gameEnded){
     return(
-      <GameEnd />
+      <GameEnd handleGameReset={handleGameReset}/>
+    //   <div className="game-over-container">
+    //     <div className="game-over"> 
+    //         <h1>Game Over</h1>
+    //         <button onClick={handleReset}>Restart Game</button>
+    //     </div>
+    // </div>
     )
   }
 
