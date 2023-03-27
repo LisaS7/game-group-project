@@ -116,7 +116,7 @@ export default function QuizContainer({ data }) {
         </div>
       </div>
 
-    <div>
+    <div className="container-for-all">
       {displayAnswer ? (
         <p>{isCorrect ?  <Player
           autoplay
