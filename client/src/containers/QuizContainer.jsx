@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
+
+import {Link} from "react-router-dom";
 import Answer from "../components/Answer";
 import "./QuizContainer.css";
 // import Highscore from "../components/Highscore";
+
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
 import Timer from "../components/Timer";
+
 
 
 import Loading from "../components/Loading";
@@ -34,6 +38,11 @@ export default function QuizContainer({ data }) {
     // add points to score
     setScore(score + 1);
     // post new score to db (waiting on function for game ending)
+  }
+
+  function handleRest() {
+    setScore(0)
+    setQuestions(data)
   }
 
   useEffect(() => {
@@ -91,6 +100,12 @@ export default function QuizContainer({ data }) {
 
   return (
     <>
+    <div>
+   
+      <Link to="/"><button>Return To Menu</button></Link> 
+    
+      <button onClick={handleRest}>Reset</button>
+    </div>
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
         <div>

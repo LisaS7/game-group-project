@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
-const Timer = ({ duration }) => {
+const Timer = ({ duration}) => {
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
@@ -16,8 +16,6 @@ const Timer = ({ duration }) => {
   }, []);
 
   const percentageLeft = (timeLeft / duration) * 100;
-
-
 
   return (
     <>

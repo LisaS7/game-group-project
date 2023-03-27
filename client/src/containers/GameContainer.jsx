@@ -3,6 +3,7 @@ import { GameMenu } from "../components/GameMenu";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 
+
 export default function GameContainer() {
   const [data, setData] = useState([]);
   const [category, setCategory] = useState("");
