@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
+
 const Timer = ({ duration, gameEnded, setGameEnded }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
 
@@ -14,12 +15,12 @@ const Timer = ({ duration, gameEnded, setGameEnded }) => {
 
   const percentageLeft = (timeLeft / duration) * 100;
 
+
   if (percentageLeft === 0) {
     setTimeout(() => {
       setGameEnded(true);
     }, 1010)
   }
-
 
   return (
     <>

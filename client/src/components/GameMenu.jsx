@@ -29,7 +29,6 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
     }
   }
 
-  // {isCorrect && answer === correct ? "correct" : ""}
 
   const categoryElements = categories.map((category, index) => (
     <button className="menu-btn btn-color btn-category" key={index} onClick={(e) => handleClick(e)}>

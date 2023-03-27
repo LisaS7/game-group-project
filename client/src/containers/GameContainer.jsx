@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import GameEnd from "../components/GameEnd";
 import { GameMenu } from "../components/GameMenu";
+import {Routes, Route } from "react-router-dom";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
+
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
