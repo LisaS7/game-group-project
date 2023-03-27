@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
-const Timer = ({ duration}) => {
+
+const Timer = ({ duration, gameEnded, setGameEnded }) => {
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTimeLeft(timeLeft => timeLeft - 1);
-      if (timeLeft === 0) {
-        // endGame();                    waiting for end game function
-      }
     }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
 
   const percentageLeft = (timeLeft / duration) * 100;
+
+
+  if (percentageLeft === 0) {
+    setTimeout(() => {
+      setGameEnded(true);
+    }, 1010)
+  }
 
   return (
     <>

@@ -16,6 +16,7 @@ body {
   margin:0;
   background: #112;
 }
+
 .logo {
   text-align: center;
   width: 65%;
@@ -36,12 +37,15 @@ body {
   color: #fee;
   text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #89216B, 0 0 0.5em #89216B, 0 0 0.1em #89216B, 0 10px 3px #000;
 }
+
 .logo b span{
   animation: blink linear infinite 2s;
 }
+
 .logo b span:nth-of-type(2){
   animation: blink linear infinite 3s;
 }
+
 @keyframes blink {
   78% {
     color: inherit;
@@ -81,7 +85,6 @@ body {
 
 /* BUTTON - UNIVERSAL */
 
-
 button {
   box-sizing: border-box;
   border: 0;
@@ -97,3 +100,4 @@ button {
   padding-right: 16px;
   transition: box-shadow .15s,transform .15s;
 }
+

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
-import { AnimatePresence } from "framer-motion";
+import MusicPlayer from "./components/Music/MusicPlayer";
 
 function App() {
   const [intro, setIntro] = useState(true);
@@ -11,15 +11,16 @@ function App() {
   if (intro) {
     return (
       <div>
-        <AnimatePresence>
-          <Intro setIntro={setIntro} />
-        </AnimatePresence>
+        <MusicPlayer intro={true} />
+        <Intro setIntro={setIntro} />
       </div>
     );
   }
 
   return (
     <div className="App">
+     <MusicPlayer />
+
           <Router>
             <Routes>
               <Route path="/" element={

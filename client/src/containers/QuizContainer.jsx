@@ -2,23 +2,17 @@ import React, { useState, useEffect } from "react";
 
 import {Link} from "react-router-dom";
 import Answer from "../components/Answer";
-import "./QuizContainer.css";
-// import Highscore from "../components/Highscore";
-
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
 import Timer from "../components/Timer";
-
-
-
 import Loading from "../components/Loading";
 
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data }) {
+export default function QuizContainer({ data, gameEnded, setGameEnded }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -76,17 +70,6 @@ export default function QuizContainer({ data }) {
   incorrectAnswers.push(questions[0].correctAnswer);
   const allAnswers = [...new Set(incorrectAnswers)].sort();
 
-  const variants = {
-    initial: { opacity: 1 },
-    correct: {
-      opacity: [0, 1, 0],
-      transition: { duration: 1.5, delay: 0.5 },
-    },
-    incorrect: {
-      opacity: 0,
-    },
-  };
-
   const numberVariants = {
     initial: { y: 0 },
     correct: {
@@ -131,39 +114,53 @@ export default function QuizContainer({ data }) {
         </div>
       </div>
 
-    <div className="container-for-all">
-      {displayAnswer ? (
-        <p>{isCorrect ?  <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
-          style={{ height: '200px', width: '200px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>: <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
-          style={{ height: '200px', width: '200px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>}</p>
-      ) : (
-        <Question question={questions[0].question} />
-      )}
+      <div className="container-for-all">
+        {displayAnswer ? (
+          <p>
+            {isCorrect ? (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
+                style={{ height: "200px", width: "200px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            ) : (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
+                style={{ height: "200px", width: "200px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            )}
+          </p>
+        ) : (
+          <Question question={questions[0].question} />
+        )}
+
 
     <div>
-      <Timer duration={60} /> 
+      <Timer duration={30} gameEnded={gameEnded} setGameEnded={setGameEnded} /> 
     </div>
 
-      <Answer
-        correct={questions[0].correctAnswer}
-        allAnswers={allAnswers}
-        questionAnswered={questionAnswered}
-        correctAnswer={correctAnswer}
-        isCorrect={isCorrect}
+
+        <Answer
+          correct={questions[0].correctAnswer}
+          allAnswers={allAnswers}
+          questionAnswered={questionAnswered}
+          correctAnswer={correctAnswer}
+          isCorrect={isCorrect}
         />
-    </div>
+      </div>
     </>
   );
 }
