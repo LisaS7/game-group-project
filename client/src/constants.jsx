@@ -1,4 +1,5 @@
 export const answerDelay = 2000;
+export const backgroundMusicVolume = 0.2;
 
 export const categories = [
   "film_and_tv",
