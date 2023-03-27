@@ -1,5 +1,10 @@
 export const answerDelay = 2000;
+
 export const backgroundMusicVolume = 0.2;
+export const correctAnswerAudio =
+  "https://www.fesliyanstudios.com/play-mp3/4232";
+export const incorrectAnswerAudio =
+  "https://www.fesliyanstudios.com/play-mp3/4221";
 
 export const categories = [
   "film_and_tv",
