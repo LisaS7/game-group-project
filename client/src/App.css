@@ -101,18 +101,3 @@ button {
   transition: box-shadow .15s,transform .15s;
 }
 
-.music-button {
-  display: flex;
-  justify-content: end;
-  padding-top: 1rem;
-  padding-right: 3rem;
-}
-
-.music-button button {
-  padding: 0.5rem 0.75rem;
-  font-size: 1.4rem;
-}
-
-.music-button p {
-  margin: auto 0;
-}

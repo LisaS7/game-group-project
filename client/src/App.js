@@ -1,29 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
-import backgroundMusic from "../src/background.mp3";
-import { backgroundMusicVolume } from "./constants";
+import MusicPlayer from "./components/Music/MusicPlayer";
 
 function App() {
   const [intro, setIntro] = useState(true);
-  const song = useRef(new Audio(backgroundMusic));
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  useEffect(() => {
-    song.current.loop = true;
-    song.current.volume = backgroundMusicVolume;
-    song.current.play();
-  }, []);
-
-  function toggleMusic() {
-    isPlaying ? song.current.pause() : song.current.play();
-    setIsPlaying(!isPlaying);
-  }
 
   if (intro) {
     return (
       <div>
+        <MusicPlayer intro={true} />
         <Intro setIntro={setIntro} />
       </div>
     );
@@ -31,14 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="music-button">
-        <p>Background Music </p>
-        <button onClick={() => toggleMusic()}>
-          <span className="material-symbols-outlined">
-            {isPlaying ? "pause" : "play_arrow"}
-          </span>
-        </button>
-      </div>
+      <MusicPlayer />
       <GameContainer />
     </div>
   );
