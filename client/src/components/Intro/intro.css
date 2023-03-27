@@ -1,22 +1,24 @@
 .intro-container {
-    width: 110vw;
-    height: 110vh;
+    width: 100vw;
+    height: 100vh;
     background-image: url("./background.jpeg");
     background-size: cover;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .host {
     position: absolute;
-    bottom: 7rem;
+    bottom: 5rem;
 }
 
 .speech-bubble-container {
     position: absolute;
-    left: 43vw;
+    left: 40vw;
     bottom: 40rem;
 }
 
