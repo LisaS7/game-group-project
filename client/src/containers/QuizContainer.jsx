@@ -10,7 +10,7 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data }) {
+export default function QuizContainer({ data, gameEnded, setGameEnded }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -134,9 +134,11 @@ export default function QuizContainer({ data }) {
           <Question question={questions[0].question} />
         )}
 
-        <div>
-          <Timer duration={60} />
-        </div>
+
+    <div>
+      <Timer duration={30} gameEnded={gameEnded} setGameEnded={setGameEnded} /> 
+    </div>
+
 
         <Answer
           correct={questions[0].correctAnswer}
