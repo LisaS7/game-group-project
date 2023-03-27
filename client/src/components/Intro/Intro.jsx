@@ -4,8 +4,6 @@ import hostImg from "./host.png";
 import speechBubble from "./speech_bubble.png";
 import starButton from "./star-button.png";
 
-const containerVariants = {};
-
 const hostVariants = {
   initial: { x: "50vw" },
   animate: { x: 0, transition: { duration: 2, delay: 0.5 } },
@@ -23,14 +21,7 @@ const buttonVariants = {
 
 export default function Intro({ setIntro }) {
   return (
-    <motion.div
-      key="container"
-      className="intro-container"
-      initial="initial"
-      animate="animate"
-      variants={containerVariants}
-      exit={{ opacity: 0, transition: { duration: 2 } }}
-    >
+    <div className="intro-container">
       <div className="host-container">
         <motion.img variants={hostVariants} className="host" src={hostImg} />
         <motion.div
@@ -38,7 +29,6 @@ export default function Intro({ setIntro }) {
           variants={speechVariants}
         >
           <motion.img className="speech-bubble" src={speechBubble} />
-          <p className="speech-text">Welcome to Mind Blank!</p>
         </motion.div>
       </div>
 
@@ -48,6 +38,6 @@ export default function Intro({ setIntro }) {
         src={starButton}
         onClick={() => setIntro(false)}
       />
-    </motion.div>
+    </div>
   );
 }

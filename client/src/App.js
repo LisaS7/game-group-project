@@ -2,17 +2,19 @@ import { useState } from "react";
 import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
-import { AnimatePresence } from "framer-motion";
+import backgroundMusic from "../src/background.mp3";
+
+let song = new Audio(backgroundMusic);
 
 function App() {
   const [intro, setIntro] = useState(true);
+  song.loop = true;
+  song.play();
 
   if (intro) {
     return (
       <div>
-        <AnimatePresence>
-          <Intro setIntro={setIntro} />
-        </AnimatePresence>
+        <Intro setIntro={setIntro} />
       </div>
     );
   }
