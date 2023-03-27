@@ -1,4 +1,5 @@
 import React from "react";
+import "./GameEnd.css";
 
 export default function GameEnd({ setStartGame }) {
   function handleClick() {
@@ -11,4 +12,5 @@ export default function GameEnd({ setStartGame }) {
       <button onClick={() => handleClick()}>Restart</button>
     </div>
   );
+
 }
