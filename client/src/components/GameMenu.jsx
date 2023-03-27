@@ -28,13 +28,17 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
   const [hiddenDifficulty, setHiddenDifficulty] = useState(true);
 
   function handleClick(e) {
-    selectedCategories.push(e.target.textContent);
-    setCategory(selectedCategories.join(","));
-    if (e.target.classList.contains("background-green")) {
+    const category = e.target.textContent;
+    if (selectedCategories.includes(category)) {
+      const index = selectedCategories.indexOf(category);
+      selectedCategories.splice(index, 1);
       e.target.classList.remove("background-green");
     } else {
+      selectedCategories.push(category);
       e.target.classList.add("background-green");
     }
+    setCategory(selectedCategories.join(","));
+    console.log(selectedCategories);
   }
 
   function handleDifficulty(e) {

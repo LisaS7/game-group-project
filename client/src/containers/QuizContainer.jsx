@@ -122,7 +122,7 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
 
       <div className="container-for-all">
         {displayAnswer ? (
-          <p>
+          <div>
             {isCorrect ? (
               <Player
                 autoplay
@@ -148,7 +148,7 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
                 />
               </Player>
             )}
-          </p>
+          </div>
         ) : (
           <Question question={questions[0].question} />
         )}
