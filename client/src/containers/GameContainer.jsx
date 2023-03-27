@@ -73,6 +73,7 @@ export default function GameContainer() {
         gameEnded={gameEnded}
         setGameEnded={setGameEnded}
         setStartGame={setStartGame}
+        getData={getData}
       />
     </div>
   );

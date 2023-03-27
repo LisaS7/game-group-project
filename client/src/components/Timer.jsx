@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Timer.css";
 
-const Timer = ({ duration, gameEnded, setGameEnded }) => {
+const Timer = ({ duration, gameEnded, setGameEnded, handleTimerReset}) => {
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const Timer = ({ duration, gameEnded, setGameEnded }) => {
       setGameEnded(true);
     }, 1010);
   }
+
 
   return (
     <>

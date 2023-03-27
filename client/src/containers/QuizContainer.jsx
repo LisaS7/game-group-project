@@ -12,12 +12,13 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data, gameEnded, setGameEnded, setStartGame }) {
+export default function QuizContainer({ data, gameEnded, setGameEnded, setStartGame, getData }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
   const [score, setScore] = useState(0);
+  const [gameRestart, setGameRestart] = useState(null)
 
 
 
@@ -38,10 +39,13 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
 
   function handleReturn () {
     setStartGame(false)
+    getData()
   }
+
   function handleReset() {
     setScore(0);
     setQuestions(data);
+    getData()
   }
 
   useEffect(() => {
@@ -87,10 +91,10 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
   };
 
 
+
   return (
     <>
       <div>
-
           <button onClick={handleReturn} >Return To Menu</button>
           <button onClick={handleReset}>Reset</button>
       </div>
