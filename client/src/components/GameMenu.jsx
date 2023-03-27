@@ -11,6 +11,12 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   function handleClick(e) {
     selectedCategories.push(e.target.textContent);
     setCategory(selectedCategories.join(","));
+    if (e.target.classList.contains("background-green")){
+      e.target.classList.remove("background-green");
+    }
+    else{
+      e.target.classList.add("background-green");
+    }
   }
 
   function handleDifficulty(e) {
