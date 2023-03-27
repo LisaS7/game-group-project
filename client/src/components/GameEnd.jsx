@@ -1,23 +1,16 @@
 import React from "react";
-
-
 import "./GameEnd.css";
-const GameEnd = ({handleGameReset}) => {
 
-function handleClick () {
-    handleGameReset(true); 
-    console.log('button clicked')
-}
+export default function GameEnd({ setStartGame }) {
+  function handleClick() {
+    setStartGame(false);
+  }
 
-    return(
-        <div className="game-over-container">
-            <div className="game-over"> 
-                <h1>Game Over</h1>
-                <button onClick={handleClick}>Restart Game</button>
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Game Over</h1>
+      <button onClick={() => handleClick()}>Restart</button>
+    </div>
+  );
 
 }
-
-export default GameEnd;
