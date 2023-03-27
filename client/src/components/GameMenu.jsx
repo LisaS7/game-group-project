@@ -11,6 +11,22 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   function handleClick(e) {
     selectedCategories.push(e.target.textContent);
     setCategory(selectedCategories.join(","));
+    if (e.target.classList.contains("background-green")){
+      e.target.classList.remove("background-green");
+    }
+    else{
+      e.target.classList.add("background-green");
+    }
+  }
+
+  function handleDifficulty(e) {
+    console.log(e.target.classList);
+    if (e.target.classList.contains("background-green")){
+      e.target.classList.remove("background-green");
+    }
+    else{
+      e.target.classList.add("background-green");
+    }
   }
 
   // {isCorrect && answer === correct ? "correct" : ""}
@@ -22,7 +38,9 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   ));
 
   const difficultyElements = difficulties.map((difficulty, index) => (
-    <button className="menu-btn btn-color btn-size" key={index} onClick={(e) => setDifficulty((e.target.textContent))}>
+    <button className="menu-btn btn-color btn-size" key={index} onClick={(e) => {
+      handleDifficulty(e)
+      setDifficulty((e.target.textContent))}}>
       {Capitalise(difficulty)}
     </button>
   ));
