@@ -21,7 +21,7 @@ const buttonVariants = {
 
 export default function Intro({ setIntro }) {
   return (
-    <div className="intro-container">
+    <motion.div className="intro-container" initial="initial" animate="animate">
       <div className="host-container">
         <motion.img variants={hostVariants} className="host" src={hostImg} />
         <motion.div
@@ -38,6 +38,6 @@ export default function Intro({ setIntro }) {
         src={starButton}
         onClick={() => setIntro(false)}
       />
-    </div>
+    </motion.div>
   );
 }
