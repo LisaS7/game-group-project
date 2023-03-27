@@ -5,6 +5,9 @@ import "./QuizContainer.css";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
+import Timer from "../components/Timer";
+
+
 import Loading from "../components/Loading";
 
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
@@ -113,48 +116,39 @@ export default function QuizContainer({ data }) {
         </div>
       </div>
 
-      <div className="quiz-container">
-        {displayAnswer ? (
-          <p>
-            {isCorrect ? (
-              <Player
-                autoplay
-                speed="1"
-                src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
-                style={{ height: "150px", width: "150px" }}
-              >
-                <Controls
-                  visible={false}
-                  buttons={["play", "repeat", "frame", "debug"]}
-                />
-              </Player>
-            ) : (
-              <Player
-                autoplay
-                speed="1"
-                src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
-                style={{ height: "150px", width: "150px" }}
-              >
-                <Controls
-                  visible={false}
-                  buttons={["play", "repeat", "frame", "debug"]}
-                />
-              </Player>
-            )}
-          </p>
-        ) : (
-          <Question question={questions[0].question} />
-        )}
-        <div className="answer-display">
-          <Answer
-            correct={questions[0].correctAnswer}
-            allAnswers={allAnswers}
-            questionAnswered={questionAnswered}
-            correctAnswer={correctAnswer}
-            isCorrect={isCorrect}
-          />
-        </div>
-      </div>
+    <div>
+      {displayAnswer ? (
+        <p>{isCorrect ?  <Player
+          autoplay
+          speed="1"
+          src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
+          style={{ height: '200px', width: '200px' }}
+      >
+              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
+          </Player>: <Player
+          autoplay
+          speed="1"
+          src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
+          style={{ height: '200px', width: '200px' }}
+      >
+              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
+          </Player>}</p>
+      ) : (
+        <Question question={questions[0].question} />
+      )}
+
+    <div>
+      <Timer duration={60} /> 
+    </div>
+
+      <Answer
+        correct={questions[0].correctAnswer}
+        allAnswers={allAnswers}
+        questionAnswered={questionAnswered}
+        correctAnswer={correctAnswer}
+        isCorrect={isCorrect}
+        />
+    </div>
     </>
   );
 }
