@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { GameMenu } from "../components/GameMenu";
+import {Routes, Route } from "react-router-dom";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 

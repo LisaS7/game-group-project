@@ -24,7 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={
                   <GameContainer />}/>
-            </Routes>
+          </Routes>
         </Router>
     </div>
   );
