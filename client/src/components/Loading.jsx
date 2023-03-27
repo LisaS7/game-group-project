@@ -11,6 +11,7 @@ const spinVariant = {
 export default function Loading() {
   return (
     <>
+    <div className="loading-div">
       <motion.h2 className="loading-heading">Fetching Questions...</motion.h2>
       <motion.p
         className="loading-text"
@@ -19,6 +20,7 @@ export default function Loading() {
       >
         ?
       </motion.p>
+    </div>
     </>
   );
 }

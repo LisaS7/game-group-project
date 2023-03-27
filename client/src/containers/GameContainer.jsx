@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import GameEnd from "../components/GameEnd";
 import { GameMenu } from "../components/GameMenu";
+import { Routes, Route } from "react-router-dom";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 
@@ -8,6 +10,8 @@ export default function GameContainer() {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [startGame, setStartGame] = useState(false);
+  const [gameEnded, setGameEnded] = useState(false);
+  const [gamereset, setGameReset] = useState(false);
 
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
@@ -22,12 +26,24 @@ export default function GameContainer() {
     getData();
   }, [category]);
 
+  // useEffect(() => {
+  
+  // }, [gamereset])
+
+  function handleGameReset() {
+    setGameReset(true)
+  }
+
   if (!data.length) return <Loading />;
 
   if (!startGame) {
     return (
       <div>
-        <div class="logo"><b>M<span>in</span>d<span></span> <span>B</span>lan<span>k</span></b></div>
+        <div className="logo">
+          <b>
+            M<span>in</span>d<span></span> <span>B</span>lan<span>k</span>
+          </b>
+        </div>
         <GameMenu
           setStartGame={setStartGame}
           setCategory={setCategory}
@@ -39,9 +55,22 @@ export default function GameContainer() {
     );
   }
 
+  if (gameEnded) {
+    return (
+      <div>
+        <GameEnd setStartGame={setStartGame} />
+      </div>
+    );
+
+  }
+
   return (
     <div>
-      <QuizContainer data={data} />
+      <QuizContainer
+        data={data}
+        gameEnded={gameEnded}
+        setGameEnded={setGameEnded}
+      />
     </div>
   );
 }

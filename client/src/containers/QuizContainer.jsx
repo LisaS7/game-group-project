@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import { Link } from "react-router-dom";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
@@ -10,7 +12,7 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data }) {
+export default function QuizContainer({ data, gameEnded, setGameEnded }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -30,6 +32,11 @@ export default function QuizContainer({ data }) {
     // add points to score
     setScore(score + 1);
     // post new score to db (waiting on function for game ending)
+  }
+
+  function handleReset() {
+    setScore(0);
+    setQuestions(data);
   }
 
   useEffect(() => {
@@ -76,6 +83,13 @@ export default function QuizContainer({ data }) {
 
   return (
     <>
+      <div>
+        <Link to="/">
+          <button>Return To Menu</button>
+        </Link>
+
+        <button onClick={handleReset}>Reset</button>
+      </div>
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
         <div>
@@ -135,7 +149,11 @@ export default function QuizContainer({ data }) {
         )}
 
         <div>
-          <Timer duration={60} />
+          <Timer
+            duration={30}
+            gameEnded={gameEnded}
+            setGameEnded={setGameEnded}
+          />
         </div>
 
         <Answer
