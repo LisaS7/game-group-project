@@ -1,6 +1,6 @@
 .music-button {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     padding-top: 1rem;
     padding-right: 3rem;
   }

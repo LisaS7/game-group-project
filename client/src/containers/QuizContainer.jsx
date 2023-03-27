@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Answer from "../components/Answer";
-// import Highscore from "../components/Highscore";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
@@ -102,27 +101,38 @@ export default function QuizContainer({ data }) {
         </div>
       </div>
 
-
-    <div className="container-for-all">
-      {displayAnswer ? (
-        <p>{isCorrect ?  <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
-          style={{ height: '200px', width: '200px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>: <Player
-          autoplay
-          speed="1"
-          src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
-          style={{ height: '200px', width: '200px' }}
-      >
-              <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
-          </Player>}</p>
-      ) : (
-        <Question question={questions[0].question} />
-      )}
+      <div className="container-for-all">
+        {displayAnswer ? (
+          <p>
+            {isCorrect ? (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json"
+                style={{ height: "200px", width: "200px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            ) : (
+              <Player
+                autoplay
+                speed="1"
+                src="https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json"
+                style={{ height: "200px", width: "200px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            )}
+          </p>
+        ) : (
+          <Question question={questions[0].question} />
+        )}
 
         <div>
           <Timer duration={60} />
