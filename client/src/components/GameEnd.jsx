@@ -7,9 +7,11 @@ export default function GameEnd({ setStartGame }) {
   }
 
   return (
-    <div>
-      <h1>Game Over</h1>
-      <button onClick={() => handleClick()}>Restart</button>
+    <div className="game-over-container">
+        <div className="game-over">
+            <h1>Game Over</h1>
+            <button onClick={() => handleClick()}>Restart</button>
+         </div>
     </div>
   );
 
