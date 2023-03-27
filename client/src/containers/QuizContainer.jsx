@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
@@ -18,8 +17,6 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
   const [score, setScore] = useState(0);
-  const [gameRestart, setGameRestart] = useState(null)
-
 
 
   function questionAnswered() {
