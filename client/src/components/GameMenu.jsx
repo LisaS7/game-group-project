@@ -1,8 +1,27 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { categories, difficulties } from "../constants";
 import "./GameMenu.css";
 import { Capitalise } from "../utils/capitalise";
 let selectedCategories = [];
+
+const animateButtonVariants = {
+  initial: { scale: 0, x: "10vw" },
+  animate: { scale: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
+};
+
+const startButtonVariants = {
+  initial: { scale: 0, y: "50vh" },
+  animate: {
+    scale: [1, 1.1, 1],
+    y: 0,
+    transition: {
+      duration: 1,
+      delay: 1,
+      scale: { repeat: Infinity },
+    },
+  },
+};
 
 export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   const [hiddenCategory, setHiddenCategory] = useState(true);
@@ -11,39 +30,43 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   function handleClick(e) {
     selectedCategories.push(e.target.textContent);
     setCategory(selectedCategories.join(","));
-    if (e.target.classList.contains("background-green")){
+    if (e.target.classList.contains("background-green")) {
       e.target.classList.remove("background-green");
-    }
-    else{
+    } else {
       e.target.classList.add("background-green");
     }
   }
 
   function handleDifficulty(e) {
-    console.log(e.target.classList);
-    if (e.target.classList.contains("background-green")){
+    if (e.target.classList.contains("background-green")) {
       e.target.classList.remove("background-green");
-    }
-    else{
+    } else {
       e.target.classList.add("background-green");
     }
   }
 
-
   const categoryElements = categories.map((category, index) => (
-    <button className="menu-btn btn-color btn-category" key={index} onClick={(e) => handleClick(e)}>
-      {Capitalise(category.replaceAll('_', ' '))}
+    <button
+      className="menu-btn btn-color btn-category"
+      key={index}
+      onClick={(e) => handleClick(e)}
+    >
+      {Capitalise(category.replaceAll("_", " "))}
     </button>
   ));
 
   const difficultyElements = difficulties.map((difficulty, index) => (
-    <button className="menu-btn btn-color btn-size" key={index} onClick={(e) => {
-      handleDifficulty(e)
-      setDifficulty((e.target.textContent))}}>
+    <button
+      className="menu-btn btn-color btn-size"
+      key={index}
+      onClick={(e) => {
+        handleDifficulty(e);
+        setDifficulty(e.target.textContent);
+      }}
+    >
       {Capitalise(difficulty)}
     </button>
   ));
-
 
   const handleHiddenCategory = () => {
     setHiddenCategory(!hiddenCategory);
@@ -60,22 +83,36 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   };
 
   return (
-    <div className="btn-container">
+    <motion.div className="btn-container" initial="initial" animate="animate">
       <div>
-        <button className="menu-btn btn-size" onClick={handleHiddenCategory}>Select Category</button>
+        <motion.button
+          className="menu-btn btn-size"
+          onClick={handleHiddenCategory}
+          variants={animateButtonVariants}
+        >
+          Select Category
+        </motion.button>
         <div hidden={hiddenCategory}>
-          <div className="category-container">
-          {categoryElements}
-          </div>
+          <div className="category-container">{categoryElements}</div>
         </div>
       </div>
       <div>
-        <button className="menu-btn btn-size"onClick={handleHiddenDifficulty}>Select Difficulty</button>
-        <div hidden={hiddenDifficulty}>
-          {difficultyElements}
-        </div>
+        <motion.button
+          className="menu-btn btn-size"
+          onClick={handleHiddenDifficulty}
+          variants={animateButtonVariants}
+        >
+          Select Difficulty
+        </motion.button>
+        <div hidden={hiddenDifficulty}>{difficultyElements}</div>
       </div>
-      <button className="start-quiz-btn btn-size" onClick={handleStartGame}>Start Game!</button>
-    </div>
+      <motion.button
+        className="start-quiz-btn btn-size"
+        onClick={handleStartGame}
+        variants={startButtonVariants}
+      >
+        Start Game!
+      </motion.button>
+    </motion.div>
   );
 }
