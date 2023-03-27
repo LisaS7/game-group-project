@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import GameEnd from "../components/GameEnd";
 import { GameMenu } from "../components/GameMenu";
-import {Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
-
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
@@ -31,7 +30,11 @@ export default function GameContainer() {
   if (!startGame) {
     return (
       <div>
-        <div class="logo"><b>M<span>in</span>d<span></span> <span>B</span>lan<span>k</span></b></div>
+        <div className="logo">
+          <b>
+            M<span>in</span>d<span></span> <span>B</span>lan<span>k</span>
+          </b>
+        </div>
         <GameMenu
           setStartGame={setStartGame}
           setCategory={setCategory}
@@ -43,15 +46,17 @@ export default function GameContainer() {
     );
   }
 
-  if (gameEnded){
-    return(
-      <GameEnd />
-    )
+  if (gameEnded) {
+    return <GameEnd />;
   }
 
   return (
     <div>
-      <QuizContainer data={data} gameEnded={gameEnded} setGameEnded={setGameEnded} />
+      <QuizContainer
+        data={data}
+        gameEnded={gameEnded}
+        setGameEnded={setGameEnded}
+      />
     </div>
   );
 }
