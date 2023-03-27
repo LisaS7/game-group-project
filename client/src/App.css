@@ -1,3 +1,99 @@
 .App {
   text-align: center;
+  color: #fff;
+}
+
+/* LOGO - MIND BLANK */
+@import url(//fonts.googleapis.com/css?family=Vibur);
+
+html,body{
+  height: 100vh;
+
+}
+body {
+  /* background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
+  background-size:cover; */
+  margin:0;
+  background: #112;
+}
+.logo {
+  text-align: center;
+  width: 65%;
+  height: 250px;
+  margin: auto;
+  margin-top: 5rem;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  user-select: none;
+}
+
+.logo b{
+  /* font: 400 19vh "Orbitron"; */
+  font: 400 19vh "Vibur";
+  color: #fee;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #89216B, 0 0 0.5em #89216B, 0 0 0.1em #89216B, 0 10px 3px #000;
+}
+.logo b span{
+  animation: blink linear infinite 2s;
+}
+.logo b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: #333;
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+/* END OF LOGO - MIND BLANK */
+
+
+/* BUTTON - UNIVERSAL */
+
+
+button {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 6px;
+  background-image:  linear-gradient(to right, #89216B, #DA4453);
+  color: #fff;
+  cursor: pointer;
+  height: 48px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  padding-left: 16px;
+  padding-right: 16px;
+  transition: box-shadow .15s,transform .15s;
 }

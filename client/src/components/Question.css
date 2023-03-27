@@ -1,4 +1,50 @@
+.question-container {
+  /* animation: pulsate 1.5s infinite alternate;   */
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em;
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #89216B,
+            0 0 0.8rem #89216B,
+            0 0 2.8rem #89216B,
+            inset 0 0 1.3rem #89216B; 
+}
+
+@keyframes pulsate {
+    
+  100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #89216B,
+      0 0 80px #89216B,
+      0 0 90px #89216B,
+      0 0 100px #89216B,
+      0 0 150px #89216B;
+  
+  }
+  
+  0% {
+
+    text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 6px #fff,
+    0 0 10px #89216B,
+    0 0 45px #89216B,
+    0 0 55px #89216B,
+    0 0 70px #89216B,
+    0 0 80px #89216B;
+
+}
+
+}
+
 h3 {
     font-size: 2rem;
     padding: 2rem;
+    font-family: 'Montserrat Alternates', sans-serif;
 }

@@ -8,7 +8,7 @@ const questionVariant = {
 
 export default function Question({ question }) {
   return (
-    <motion.div variants={questionVariant} initial="initial" animate="animate">
+    <motion.div className="question-container" variants={questionVariant} initial="initial" animate="animate">
       <h3>{question}</h3>
     </motion.div>
   );

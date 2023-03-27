@@ -11,8 +11,12 @@ const spinVariant = {
 export default function Loading() {
   return (
     <>
-      <motion.h2>Fetching Questions...</motion.h2>
-      <motion.p animate="animate" variants={spinVariant}>
+      <motion.h2 className="loading-heading">Fetching Questions...</motion.h2>
+      <motion.p
+        className="loading-text"
+        animate="animate"
+        variants={spinVariant}
+      >
         ?
       </motion.p>
     </>

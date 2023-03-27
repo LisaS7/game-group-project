@@ -1,0 +1,96 @@
+/* .btn-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+.start-quiz-btn {
+    align-items: center;
+    appearance: none;
+    background-image:  linear-gradient(to right, #89216B, #DA4453);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'Montserrat Alternates', sans-serif;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+
+.start-quiz-btn:focus {
+    box-shadow: #DA4453 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #DA4453 0 -3px 0 inset;
+}
+
+.start-quiz-btn:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #DA4453 0 -5px 0 inset;
+    transform: translateY(-2px);
+}
+
+.start-quiz-btn:active {
+    box-shadow: #DA4453 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+.menu-btn {
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 6px;
+    background-image:  linear-gradient(to right, #89216B, #DA4453);
+    color: #fff;
+    cursor: pointer;
+    height: 48px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 19px;
+    line-height: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+    transition: box-shadow .15s,transform .15s;
+}
+
+.menu-btn:hover,.menu-btn:active, .menu-btn:focus {
+    border: white solid;
+} 
+
+.btn-size {
+    width: 250px;
+}
+
+.btn-color {
+    background-image: linear-gradient(to right, #b24894, #b24894);
+}
+
+.category-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-category {
+    flex: 0 20%;
+    width: 100px;
+}
+
+.active {
+    border: white solid;
+}
