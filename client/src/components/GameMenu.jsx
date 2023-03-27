@@ -23,7 +23,7 @@ const startButtonVariants = {
   },
 };
 
-export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
+export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
   const [hiddenCategory, setHiddenCategory] = useState(true);
   const [hiddenDifficulty, setHiddenDifficulty] = useState(true);
 

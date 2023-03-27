@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+
 
 import GameEnd from "../components/GameEnd";
 import { GameMenu } from "../components/GameMenu";
@@ -13,7 +13,6 @@ export default function GameContainer() {
   const [difficulty, setDifficulty] = useState("");
   const [startGame, setStartGame] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
-  const [gamereset, setGameReset] = useState(false);
 
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
@@ -32,9 +31,6 @@ export default function GameContainer() {
   
   // }, [gamereset])
 
-  function handleGameReset() {
-    setGameReset(true)
-  }
 
   if (!data.length) return <Loading />;
 
@@ -73,6 +69,7 @@ export default function GameContainer() {
         gameEnded={gameEnded}
         setGameEnded={setGameEnded}
         setStartGame={setStartGame}
+        getData={getData}
       />
     </div>
   );
