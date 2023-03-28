@@ -5,19 +5,30 @@ import "./MusicPlayer.css";
 
 export default function MusicPlayer({ intro }) {
   const song = useRef(new Audio(backgroundMusic));
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(backgroundMusicVolume);
+
 
   useEffect(() => {
     song.current.loop = true;
     song.current.volume = volume;
-    song.current.play();
   }, [volume]);
 
-  function toggleMusic() {
+
+  function handleVolumeChange(e) {
+    setVolume(e.target.value);
+  }
+
+
+  useEffect(() => {
+    song.current.loop = true;
     isPlaying ? song.current.pause() : song.current.play();
+  },[isPlaying, []])
+
+  const togglePlay = () => {
     setIsPlaying(!isPlaying);
   }
+
 
   function handleVolumeChange(e) {
     setVolume(e.target.value);
@@ -30,9 +41,9 @@ export default function MusicPlayer({ intro }) {
   return (
     <div className="music-button">
       <p>Background Music </p>
-      <button onClick={() => toggleMusic()}>
+      <button onClick={() => togglePlay()}>
         <span className="material-symbols-outlined">
-          {isPlaying ? "pause" : "play_arrow"}
+          {!isPlaying ? "pause" : "play_arrow"}
         </span>
       </button>
       <input
@@ -46,3 +57,4 @@ export default function MusicPlayer({ intro }) {
     </div>
   );
 }
+
