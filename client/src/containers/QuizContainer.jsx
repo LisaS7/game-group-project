@@ -15,11 +15,12 @@ export default function QuizContainer({
   setStartGame,
   getData,
   highestScore,
+  score,
+  setScore,
 }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [score, setScore] = useState(0);
 
   function questionAnswered() {
     setDisplayAnswer(true);

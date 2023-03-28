@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
-import GameEnd from "../components/GameEnd";
+import GameEnd from "../components/GameEnd/GameEnd";
 import { GameMenu } from "../components/GameMenu";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
-
-import {
-  getHighscores,
-  postHighscores,
-  updateHighscore,
-} from "../HighscoreService";
-import { addHighscores } from "../HighscoreService";
+import { getHighscores, postHighscores } from "../HighscoreService";
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
@@ -17,7 +11,7 @@ export default function GameContainer() {
   const [difficulty, setDifficulty] = useState("");
   const [startGame, setStartGame] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
-  const [newHighscore, setNewHighscore] = useState({});
+  const [score, setScore] = useState(0);
   const [highscores, setHighscores] = useState([]);
 
   console.log(highscores);
@@ -54,19 +48,17 @@ export default function GameContainer() {
 
   let highestScore;
   if (highscores.length) {
-    highestScore = Math.max.apply(
-      Math,
-      highscores.map((score) => score.highscore)
-    );
+    highestScore = Math.max.apply(Math, eachHighScore);
   } else {
     highestScore = 0;
   }
 
   console.log("highest score", highestScore);
 
-  const addNewHighscore = (score) => {
+  if (gameEnded && score > highestScore) {
     setHighscores([...highscores, score]);
-  };
+    postHighscores({ highscore: score });
+  }
 
   if (!data.length) return <Loading />;
 
@@ -92,7 +84,7 @@ export default function GameContainer() {
   if (gameEnded) {
     return (
       <div>
-        <GameEnd setStartGame={setStartGame} />
+        <GameEnd score={score} setStartGame={setStartGame} />
       </div>
     );
   }
@@ -106,7 +98,8 @@ export default function GameContainer() {
         setStartGame={setStartGame}
         getData={getData}
         highestScore={highestScore}
-        addNewHighscore={addNewHighscore}
+        score={score}
+        setScore={setScore}
       />
     </div>
   );
