@@ -28,9 +28,16 @@ const alienVariants = {
   animate: { scale: 1, transition: { duration: 0.5, delay: 8.5 } },
 };
 
-export default function GameEnd({ setStartGame, score }) {
+export default function GameEnd({
+  setStartGame,
+  setGameEnded,
+  setScore,
+  score,
+}) {
   function handleClick() {
     setStartGame(false);
+    setGameEnded(false);
+    setScore(0);
   }
 
   let hostImage, speechBubble1, speechBubble2, alien;
