@@ -14,8 +14,6 @@ export default function GameContainer() {
   const [score, setScore] = useState(0);
   const [highscores, setHighscores] = useState([]);
 
-  console.log(highscores);
-
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
       category && `categories=${category}`
@@ -36,15 +34,10 @@ export default function GameContainer() {
     });
   }, []);
 
-  console.log("highscores", highscores);
-
   const eachHighScore = highscores.map((highscore) => {
     return highscore.highscore;
   });
   // this gets back an array of scores
-  console.log("each high score:", eachHighScore);
-
-  // when the game ends, the app should look to see if the current score is higher than the highscore that is being displayed and if it is, it should save the highscore to the database and update the highscore
 
   let highestScore;
   if (highscores.length) {
@@ -52,8 +45,6 @@ export default function GameContainer() {
   } else {
     highestScore = 0;
   }
-
-  console.log("highest score", highestScore);
 
   if (gameEnded && score > highestScore) {
     setHighscores([...highscores, score]);
@@ -84,7 +75,12 @@ export default function GameContainer() {
   if (gameEnded) {
     return (
       <div>
-        <GameEnd score={score} setStartGame={setStartGame} />
+        <GameEnd
+          score={score}
+          setStartGame={setStartGame}
+          setGameEnded={setGameEnded}
+          setScore={setScore}
+        />
       </div>
     );
   }
