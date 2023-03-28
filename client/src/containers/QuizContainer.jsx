@@ -18,6 +18,7 @@ export default function QuizContainer({
   highestScore,
   score,
   setScore,
+  setCategory
 }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);

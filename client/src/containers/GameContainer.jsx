@@ -25,7 +25,9 @@ export default function GameContainer() {
 
   useEffect(() => {
     getData();
-  }, [category]);
+    console.log(category)
+    console.log(difficulty)
+  }, [category, difficulty]);
 
   //  BACKEND SCORE DATA SECTION
   useEffect(() => {
@@ -80,6 +82,7 @@ export default function GameContainer() {
           setStartGame={setStartGame}
           setGameEnded={setGameEnded}
           setScore={setScore}
+          getData={getData}
         />
       </div>
     );
@@ -96,6 +99,7 @@ export default function GameContainer() {
         highestScore={highestScore}
         score={score}
         setScore={setScore}
+        setCategory={setCategory}
       />
     </div>
   );
