@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Answer from "../components/Answer";
 import Question from "../components/Question";
@@ -17,7 +17,8 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
   const [score, setScore] = useState(0);
-
+  const [duration, setDuration] = useState(30);
+  const [timerStarted, setTimerStarted] = useState(true)
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -42,7 +43,8 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
   function handleReset() {
     setScore(0);
     setQuestions(data);
-    getData()
+    getData();
+    setTimerStarted(!timerStarted)
   }
 
   useEffect(() => {
@@ -155,9 +157,9 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
 
         <div>
           <Timer
-            duration={30}
-            gameEnded={gameEnded}
+            duration={duration}
             setGameEnded={setGameEnded}
+            timerStarted={timerStarted}
           />
         </div>
 
