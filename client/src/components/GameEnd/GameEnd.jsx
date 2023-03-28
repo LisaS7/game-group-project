@@ -47,50 +47,45 @@ export default function GameEnd({ setStartGame, score }) {
   }
 
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      className="game-over-container"
-    >
-      <div className="game-over-container">
-        <div className="game-over">
-          <h1>Game Over</h1>
-          <h3>You scored {score}</h3>
-          <div>
-            <motion.img
-              variants={hostVariants}
-              className="end-host"
-              src={hostImage}
-            />
+    <div className="game-over-container">
+      <div className="game-over">
+        <h1>Game Over</h1>
+        <h3>You scored {score}</h3>
+        <motion.div initial="initial" animate="animate">
+          <motion.img
+            variants={hostVariants}
+            className="end-host"
+            src={hostImage}
+          />
 
-            <motion.img
-              className="end-speech-bubble"
-              variants={speechVariants1}
-              src={speechBubble1}
-            />
-            <motion.img
-              className="end-speech-bubble"
-              variants={speechVariants2}
-              src={speechBubble2}
-            />
-            <motion.div className="alien" variants={alienVariants}>
-              <Player
-                autoplay
-                loop
-                speed="1"
-                src={alien}
-                style={{ height: "400px", width: "400px" }}
-              >
-                <Controls
-                  visible={false}
-                  buttons={["play", "repeat", "frame", "debug"]}
-                />
-              </Player>
-            </motion.div>
-          </div>
-        </div>
+          <motion.img
+            className="end-speech-bubble"
+            variants={speechVariants1}
+            src={speechBubble1}
+          />
+          <motion.img
+            className="end-speech-bubble"
+            variants={speechVariants2}
+            src={speechBubble2}
+          />
+          <motion.div className="alien" variants={alienVariants}>
+            <Player
+              autoplay
+              loop
+              speed="1"
+              src={alien}
+              style={{ height: "400px", width: "400px" }}
+            >
+              <Controls
+                visible={false}
+                buttons={["play", "repeat", "frame", "debug"]}
+              />
+            </Player>
+          </motion.div>
+        </motion.div>
       </div>
+
       <button onClick={() => handleClick()}>Restart</button>
-    </motion.div>
+    </div>
   );
 }
