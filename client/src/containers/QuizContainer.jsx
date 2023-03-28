@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
 import Answer from "../components/Answer";
 import Question from "../components/Question";
 import { getHighscores } from "../HighscoreService";
@@ -12,12 +11,19 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data, gameEnded, setGameEnded }) {
+export default function QuizContainer({
+  data,
+  gameEnded,
+  setGameEnded,
+  setStartGame,
+  getData,
+  score,
+  setScore,
+}) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
-  const [score, setScore] = useState(0);
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -34,9 +40,15 @@ export default function QuizContainer({ data, gameEnded, setGameEnded }) {
     // post new score to db (waiting on function for game ending)
   }
 
+  function handleReturn() {
+    setStartGame(false);
+    getData();
+  }
+
   function handleReset() {
     setScore(0);
     setQuestions(data);
+    getData();
   }
 
   useEffect(() => {
@@ -84,10 +96,7 @@ export default function QuizContainer({ data, gameEnded, setGameEnded }) {
   return (
     <>
       <div>
-        <Link to="/">
-          <button>Return To Menu</button>
-        </Link>
-
+        <button onClick={handleReturn}>Return To Menu</button>
         <button onClick={handleReset}>Reset</button>
       </div>
       <div className="scores-container">
@@ -117,7 +126,7 @@ export default function QuizContainer({ data, gameEnded, setGameEnded }) {
 
       <div className="container-for-all">
         {displayAnswer ? (
-          <p>
+          <div>
             {isCorrect ? (
               <Player
                 autoplay
@@ -143,7 +152,7 @@ export default function QuizContainer({ data, gameEnded, setGameEnded }) {
                 />
               </Player>
             )}
-          </p>
+          </div>
         ) : (
           <Question question={questions[0].question} />
         )}

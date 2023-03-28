@@ -1,21 +1,43 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { categories, difficulties } from "../constants";
 import "./GameMenu.css";
 import { Capitalise } from "../utils/capitalise";
 let selectedCategories = [];
+
+const animateButtonVariants = {
+  initial: { scale: 0, x: "10vw" },
+  animate: { scale: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
+};
+
+const startButtonVariants = {
+  initial: { scale: 0, y: "50vh" },
+  animate: {
+    scale: [1, 1.1, 1],
+    y: 0,
+    transition: {
+      duration: 1,
+      delay: 1,
+      scale: { repeat: Infinity },
+    },
+  },
+};
 
 export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   const [hiddenCategory, setHiddenCategory] = useState(true);
   const [hiddenDifficulty, setHiddenDifficulty] = useState(true);
 
   function handleClick(e) {
-    selectedCategories.push(e.target.textContent);
-    setCategory(selectedCategories.join(","));
-    if (e.target.classList.contains("background-green")) {
+    const category = e.target.textContent;
+    if (selectedCategories.includes(category)) {
+      const index = selectedCategories.indexOf(category);
+      selectedCategories.splice(index, 1);
       e.target.classList.remove("background-green");
     } else {
+      selectedCategories.push(category);
       e.target.classList.add("background-green");
     }
+    setCategory(selectedCategories.join(","));
   }
 
   function handleDifficulty(e) {
@@ -64,24 +86,36 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   };
 
   return (
-    <div className="btn-container">
+    <motion.div className="btn-container" initial="initial" animate="animate">
       <div>
-        <button className="menu-btn btn-size" onClick={handleHiddenCategory}>
+        <motion.button
+          className="menu-btn btn-size"
+          onClick={handleHiddenCategory}
+          variants={animateButtonVariants}
+        >
           Select Category
-        </button>
+        </motion.button>
         <div hidden={hiddenCategory}>
           <div className="category-container">{categoryElements}</div>
         </div>
       </div>
       <div>
-        <button className="menu-btn btn-size" onClick={handleHiddenDifficulty}>
+        <motion.button
+          className="menu-btn btn-size"
+          onClick={handleHiddenDifficulty}
+          variants={animateButtonVariants}
+        >
           Select Difficulty
-        </button>
+        </motion.button>
         <div hidden={hiddenDifficulty}>{difficultyElements}</div>
       </div>
-      <button className="start-quiz-btn btn-size" onClick={handleStartGame}>
+      <motion.button
+        className="start-quiz-btn btn-size"
+        onClick={handleStartGame}
+        variants={startButtonVariants}
+      >
         Start Game!
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   );
 }

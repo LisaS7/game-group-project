@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
@@ -20,13 +20,7 @@ function App() {
   return (
     <div className="App">
      <MusicPlayer />
-
-          <Router>
-            <Routes>
-              <Route path="/" element={
-                  <GameContainer />}/>
-          </Routes>
-        </Router>
+        <GameContainer />
     </div>
   );
 
