@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-
 import Answer from "../components/Answer";
 import Question from "../components/Question";
-import { getHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
 import Timer from "../components/Timer";
 import Loading from "../components/Loading";
-
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
@@ -17,13 +14,13 @@ export default function QuizContainer({
   setGameEnded,
   setStartGame,
   getData,
+  highestScore,
   score,
   setScore,
 }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [highscores, setHighscores] = useState([]);
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -59,22 +56,6 @@ export default function QuizContainer({
     setDisplayAnswer(false);
     setIsCorrect(false);
   }, [questions]);
-
-  useEffect(() => {
-    getHighscores().then((allHighscores) => {
-      setHighscores(allHighscores);
-    });
-  }, []);
-
-  let highestScore;
-  if (highscores.length) {
-    highestScore = Math.max.apply(
-      Math,
-      highscores.map((score) => score.highscore)
-    );
-  } else {
-    highestScore = 0;
-  }
 
   if (!questions.length) return <Loading />;
 
@@ -159,7 +140,7 @@ export default function QuizContainer({
 
         <div>
           <Timer
-            duration={30}
+            duration={60}
             gameEnded={gameEnded}
             setGameEnded={setGameEnded}
           />
