@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-
 import Answer from "../components/Answer";
 import Question from "../components/Question";
-import { getHighscores, postHighscores, updateHighscore } from "../HighscoreService";
-import { addHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
 import Timer from "../components/Timer";
 import Loading from "../components/Loading";
-
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data, gameEnded, setGameEnded, setStartGame, getData }) {
+export default function QuizContainer({
+  data,
+  gameEnded,
+  setGameEnded,
+  setStartGame,
+  getData,
+  highestScore,
+}) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [highscores, setHighscores] = useState([]);
   const [score, setScore] = useState(0);
-  const [newHighscore, setNewHighscore] = useState({});
 
-console.log(highscores)
   function questionAnswered() {
     setDisplayAnswer(true);
     setTimeout(function () {
@@ -36,15 +36,15 @@ console.log(highscores)
     // post new score to db (waiting on function for game ending)
   }
 
-  function handleReturn () {
-    setStartGame(false)
-    getData()
+  function handleReturn() {
+    setStartGame(false);
+    getData();
   }
 
   function handleReset() {
     setScore(0);
     setQuestions(data);
-    getData()
+    getData();
   }
 
   useEffect(() => {
@@ -56,38 +56,9 @@ console.log(highscores)
     setIsCorrect(false);
   }, [questions]);
 
-  //  BACKEND SCORE DATA SECTION
-  useEffect(() => {
-    getHighscores().then((allHighscores) => {
-      setHighscores(allHighscores);
-    });
-  }, []);
-
-//   const addScore = newScore => {
-//     addHighscores.addHighscores(newScore).then(savedScore => setHighscores([...highscores, savedScore]))
-//   }
-
-const eachHighScore = highscores.map(highscore => {
-  return highscore.highscore
-}
-)
-// this gets back an array of scores 
-console.log(eachHighScore)
-
-
-
-// when the game ends, the app should look to see if the current score is higher than the highscore that is being displayed and if it is, it should save the highscore to the database and update the highscore
-
-
-  let highestScore;
-  if (highscores.length) {
-    highestScore = Math.max.apply(
-      Math,
-      highscores.map((score) => score.highscore)
-    );
-  } else {
-    highestScore = 0;
-  }
+  //   const addScore = newScore => {
+  //     addHighscores.addHighscores(newScore).then(savedScore => setHighscores([...highscores, savedScore]))
+  //   }
 
   // if (eachHighScore[1] < highestScore) {
   //   console.log(true)
@@ -95,35 +66,24 @@ console.log(eachHighScore)
   //   console.log(false)
   // }
 
-
   if (!questions.length) return <Loading />;
 
   const incorrectAnswers = questions[0].incorrectAnswers;
   incorrectAnswers.push(questions[0].correctAnswer);
   const allAnswers = [...new Set(incorrectAnswers)].sort();
 
-
-  const addNewHighscore = (score) => {
-    const temp = highscores.map(s => s);
-    temp.push(score)
-    setHighscores(temp)
-    console.log(temp)
- }
-
-  if (score > highestScore){
-    setNewHighscore(score)
-    console.log(newHighscore)
-    console.log("score is more than highscore", true)
-    postHighscores(newHighscore).then((score) => {
-      addNewHighscore(score)
-    })
-    } else {
-      console.log("score is less than highscore")
-    }
-
+  // if (score > highestScore) {
+  //   setNewHighscore(score);
+  //   console.log(newHighscore);
+  //   console.log("score is more than highscore", true);
+  //   postHighscores(newHighscore).then((score) => {
+  //     addNewHighscore(score);
+  //   });
+  // } else {
+  //   console.log("score is less than highscore");
+  // }
 
   // //////////////
-
 
   const numberVariants = {
     initial: { y: 0 },
@@ -136,12 +96,11 @@ console.log(eachHighScore)
     },
   };
 
-
   return (
     <>
       <div>
-          <button onClick={handleReturn} >Return To Menu</button>
-          <button onClick={handleReset}>Reset</button>
+        <button onClick={handleReturn}>Return To Menu</button>
+        <button onClick={handleReset}>Reset</button>
       </div>
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
