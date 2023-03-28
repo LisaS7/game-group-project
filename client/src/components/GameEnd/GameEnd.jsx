@@ -34,7 +34,7 @@ export default function GameEnd({ setStartGame, score }) {
   }
 
   let hostImage, speechBubble1, speechBubble2, alien;
-  if (score > 5) {
+  if (score > 4) {
     hostImage = hostTrophy;
     speechBubble1 = speechBubbleWin1;
     speechBubble2 = speechBubbleWin2;
