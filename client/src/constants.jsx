@@ -6,6 +6,11 @@ export const correctAnswerAudio =
 export const incorrectAnswerAudio =
   "https://www.fesliyanstudios.com/play-mp3/4221";
 
+export const correctAlien =
+  "https://assets8.lottiefiles.com/packages/lf20_xj3qhpxz.json";
+export const incorrectAlien =
+  "https://assets8.lottiefiles.com/packages/lf20_2bjwh0kp.json";
+
 export const categories = [
   "film_and_tv",
   "geography",
