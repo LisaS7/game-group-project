@@ -33,11 +33,13 @@ export default function GameEnd({
   setGameEnded,
   setScore,
   score,
+  getData
 }) {
   function handleClick() {
     setStartGame(false);
     setGameEnded(false);
     setScore(0);
+    getData();
   }
 
   let hostImage, speechBubble1, speechBubble2, alien;

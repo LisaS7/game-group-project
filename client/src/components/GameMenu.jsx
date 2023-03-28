@@ -29,6 +29,7 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
 
   function handleClick(e) {
     const category = e.target.textContent;
+    // setCategory(category)
     if (selectedCategories.includes(category)) {
       const index = selectedCategories.indexOf(category);
       selectedCategories.splice(index, 1);
@@ -64,7 +65,8 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
       key={index}
       onClick={(e) => {
         handleDifficulty(e);
-        setDifficulty(e.target.textContent);
+        const diff = e.target.textContent.toLowerCase();
+        setDifficulty(diff);
       }}
     >
       {Capitalise(difficulty)}
@@ -74,6 +76,7 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   const handleHiddenCategory = () => {
     setHiddenCategory(!hiddenCategory);
     setHiddenDifficulty(true);
+    selectedCategories = [];
   };
 
   const handleHiddenDifficulty = () => {
