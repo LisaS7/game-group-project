@@ -7,7 +7,7 @@
 }
 
 .game-over {
-    animation: pulsate 1.5s infinite alternate;  
+    animation: pulsate 1s infinite alternate;  
     border: 0.2rem solid #fff;
     border-radius: 2rem;
     padding: 0.4em;
@@ -17,8 +17,8 @@
               0 0 0.8rem #89216B,
               0 0 2.8rem #89216B,
               inset 0 0 1.3rem #89216B; 
-    width: 50%;
-    height: 500px;
+    width: 75%;
+    height: 75vh;
   }
 
 @keyframes pulsate {
@@ -50,4 +50,25 @@
       0 0 80px #89216B;
   
   }
+}
+
+.end-host {
+  position: absolute;
+  bottom: 10rem;
+  left: 25vw;
+  width: 350px;
+}
+
+.end-speech-bubble {
+  position: absolute;
+  bottom: 55vh;
+  left: 34vw;
+  width: 350px;
+}
+
+.alien {
+  margin: 10rem;
+  position: absolute;
+  right: 25vw;
+  bottom: 7vh;
 }

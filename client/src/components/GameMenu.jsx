@@ -23,7 +23,7 @@ const startButtonVariants = {
   },
 };
 
-export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
+export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   const [hiddenCategory, setHiddenCategory] = useState(true);
   const [hiddenDifficulty, setHiddenDifficulty] = useState(true);
 
@@ -38,7 +38,6 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty}) {
       e.target.classList.add("background-green");
     }
     setCategory(selectedCategories.join(","));
-    console.log(selectedCategories);
   }
 
   function handleDifficulty(e) {
