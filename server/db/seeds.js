@@ -3,12 +3,13 @@ db.dropDatabase();
 
 db.highscores.insertMany([
     {
-        highscore: 15
+        highscore: 3
     },
     {
-        highscore: 20
+        highscore: 1
     },
     {
-        highscore: 21
+        highscore: 2
     }
+    // { highscore: x if its greater than the current highscore}
 ])

@@ -3,6 +3,7 @@ import GameEnd from "../components/GameEnd/GameEnd";
 import { GameMenu } from "../components/GameMenu";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
+import { getHighscores, postHighscores } from "../HighscoreService";
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
@@ -11,6 +12,9 @@ export default function GameContainer() {
   const [startGame, setStartGame] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
   const [score, setScore] = useState(0);
+  const [highscores, setHighscores] = useState([]);
+
+  console.log(highscores);
 
   async function getData() {
     const url = `https://the-trivia-api.com/api/questions?${
@@ -24,6 +28,37 @@ export default function GameContainer() {
   useEffect(() => {
     getData();
   }, [category]);
+
+  //  BACKEND SCORE DATA SECTION
+  useEffect(() => {
+    getHighscores().then((allHighscores) => {
+      setHighscores(allHighscores);
+    });
+  }, []);
+
+  console.log("highscores", highscores);
+
+  const eachHighScore = highscores.map((highscore) => {
+    return highscore.highscore;
+  });
+  // this gets back an array of scores
+  console.log("each high score:", eachHighScore);
+
+  // when the game ends, the app should look to see if the current score is higher than the highscore that is being displayed and if it is, it should save the highscore to the database and update the highscore
+
+  let highestScore;
+  if (highscores.length) {
+    highestScore = Math.max.apply(Math, eachHighScore);
+  } else {
+    highestScore = 0;
+  }
+
+  console.log("highest score", highestScore);
+
+  if (gameEnded && score > highestScore) {
+    setHighscores([...highscores, score]);
+    postHighscores({ highscore: score });
+  }
 
   if (!data.length) return <Loading />;
 
@@ -62,6 +97,7 @@ export default function GameContainer() {
         setGameEnded={setGameEnded}
         setStartGame={setStartGame}
         getData={getData}
+        highestScore={highestScore}
         score={score}
         setScore={setScore}
       />
