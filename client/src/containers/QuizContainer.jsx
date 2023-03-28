@@ -57,34 +57,11 @@ export default function QuizContainer({
     setIsCorrect(false);
   }, [questions]);
 
-  //   const addScore = newScore => {
-  //     addHighscores.addHighscores(newScore).then(savedScore => setHighscores([...highscores, savedScore]))
-  //   }
-
-  // if (eachHighScore[1] < highestScore) {
-  //   console.log(true)
-  // } else {
-  //   console.log(false)
-  // }
-
   if (!questions.length) return <Loading />;
 
   const incorrectAnswers = questions[0].incorrectAnswers;
   incorrectAnswers.push(questions[0].correctAnswer);
   const allAnswers = [...new Set(incorrectAnswers)].sort();
-
-  // if (score > highestScore) {
-  //   setNewHighscore(score);
-  //   console.log(newHighscore);
-  //   console.log("score is more than highscore", true);
-  //   postHighscores(newHighscore).then((score) => {
-  //     addNewHighscore(score);
-  //   });
-  // } else {
-  //   console.log("score is less than highscore");
-  // }
-
-  // //////////////
 
   const numberVariants = {
     initial: { y: 0 },
