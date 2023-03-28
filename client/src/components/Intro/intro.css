@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
     background-image: url("./background.jpeg");
-    background-size: cover;
+    background-size:cover;
     position: relative;
     display: flex;
     justify-content: center;
@@ -18,17 +18,67 @@
 
 .speech-bubble-container {
     position: absolute;
-    left: 40vw;
-    bottom: 40rem;
+    left: 45vw;
+    bottom: 48vh;
 }
 
 .speech-bubble {
-    width: 20vw;
+    width: 300px;
 }
 
 .intro-button {
-    width: 20rem;
+    width: 300px;
     position: absolute;
     bottom: 8rem;
     left: 38vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .host {
+        width: 200px;
+        bottom: 10px;
+    }
+
+    .speech-bubble-container {
+        bottom: 45vh;
+    }
+
+    .intro-button {
+        width: 10rem;
+        bottom: 4rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .host {
+        width: 200px;
+        bottom: 10px;
+    }
+
+    .speech-bubble-container {
+        bottom: 45vh;
+    }
+
+    .intro-button {
+        width: 10rem;
+        bottom: 4rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .host {
+        width: 200px;
+        bottom: 10vh;
+    }
+
+    .speech-bubble-container {
+        bottom: 45vh;
+        left: 34vw;
+    }
+
+    .intro-button {
+        width: 10rem;
+        bottom: 5rem;
+        left: 13rem;
+    }
 }

@@ -72,3 +72,48 @@
   right: 25vw;
   bottom: 7vh;
 }
+
+@media only screen and (max-width: 600px) {
+  .end-host{
+    width: 200px;
+    bottom: 6vh;
+    left: 17vw;
+  }
+
+.end-speech-bubble {
+  bottom: 52vh;
+  left: 22vw;
+}
+
+.alien {
+    margin: 0;
+    right: 18vw;
+    bottom: 3vh;
+  }
+
+  #lottie {
+    width: 300px !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+
+  .end-host {
+    width: 200px;
+  }
+
+  .end-speech-bubble {
+    width: 250px;
+    bottom: 50vh;
+  }
+
+  .alien {
+    margin: 0;
+  }
+  
+
+  #lottie {
+    width: 250px !important;
+  }
+}

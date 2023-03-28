@@ -10,7 +10,7 @@ export default function GameContainer() {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [startGame, setStartGame] = useState(false);
-  const [gameEnded, setGameEnded] = useState(false);
+  const [gameEnded, setGameEnded] = useState(true);
   const [score, setScore] = useState(0);
   const [highscores, setHighscores] = useState([]);
 
