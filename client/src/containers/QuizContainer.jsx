@@ -11,13 +11,19 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
-export default function QuizContainer({ data, gameEnded, setGameEnded, setStartGame, getData }) {
+export default function QuizContainer({
+  data,
+  gameEnded,
+  setGameEnded,
+  setStartGame,
+  getData,
+  score,
+  setScore,
+}) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
-  const [score, setScore] = useState(0);
-
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -34,15 +40,15 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
     // post new score to db (waiting on function for game ending)
   }
 
-  function handleReturn () {
-    setStartGame(false)
-    getData()
+  function handleReturn() {
+    setStartGame(false);
+    getData();
   }
 
   function handleReset() {
     setScore(0);
     setQuestions(data);
-    getData()
+    getData();
   }
 
   useEffect(() => {
@@ -87,13 +93,11 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
     },
   };
 
-
-
   return (
     <>
       <div>
-          <button onClick={handleReturn} >Return To Menu</button>
-          <button onClick={handleReset}>Reset</button>
+        <button onClick={handleReturn}>Return To Menu</button>
+        <button onClick={handleReset}>Reset</button>
       </div>
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
