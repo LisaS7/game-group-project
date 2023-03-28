@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import { categories, difficulties } from "../constants";
 import "./GameMenu.css";
 import { Capitalise } from "../utils/capitalise";
+
 let selectedCategories = [];
+
+
 
 const animateButtonVariants = {
   initial: { scale: 0, x: "10vw" },
@@ -84,6 +87,7 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   const handleStartGame = () => {
     setStartGame(true);
   };
+
 
   return (
     <motion.div className="btn-container" initial="initial" animate="animate">

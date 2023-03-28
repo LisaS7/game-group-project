@@ -9,6 +9,7 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import "./QuizContainer.css";
 
+
 export default function QuizContainer({
   data,
   gameEnded,

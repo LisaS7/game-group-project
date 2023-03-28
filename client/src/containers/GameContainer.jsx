@@ -4,6 +4,7 @@ import { GameMenu } from "../components/GameMenu";
 import Loading from "../components/Loading";
 import QuizContainer from "./QuizContainer";
 import { getHighscores, postHighscores } from "../HighscoreService";
+import MusicPlayer from "../components/Music/MusicPlayer";
 
 export default function GameContainer() {
   const [data, setData] = useState([]);
@@ -56,6 +57,7 @@ export default function GameContainer() {
   if (!startGame) {
     return (
       <div>
+        <MusicPlayer />
         <div className="logo">
           <b>
             M<span>in</span>d<span></span> <span>B</span>lan<span>k</span>

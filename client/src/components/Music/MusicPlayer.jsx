@@ -29,13 +29,12 @@ export default function MusicPlayer({ intro }) {
     setIsPlaying(!isPlaying);
   }
 
-
   function handleVolumeChange(e) {
     setVolume(e.target.value);
   }
 
   if (intro) {
-    return null;
+    return (null);
   }
 
   return (
