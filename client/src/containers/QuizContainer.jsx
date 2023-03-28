@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import Answer from "../components/Answer";
 import Question from "../components/Question";
-import { getHighscores } from "../HighscoreService";
+import { getHighscores, postHighscores, updateHighscore } from "../HighscoreService";
+import { addHighscores } from "../HighscoreService";
 import { answerDelay } from "../constants";
 import Timer from "../components/Timer";
 import Loading from "../components/Loading";
@@ -17,8 +18,9 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
   const [isCorrect, setIsCorrect] = useState(false);
   const [highscores, setHighscores] = useState([]);
   const [score, setScore] = useState(0);
+  const [newHighscore, setNewHighscore] = useState({});
 
-
+console.log(highscores)
   function questionAnswered() {
     setDisplayAnswer(true);
     setTimeout(function () {
@@ -54,11 +56,28 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
     setIsCorrect(false);
   }, [questions]);
 
+  //  BACKEND SCORE DATA SECTION
   useEffect(() => {
     getHighscores().then((allHighscores) => {
       setHighscores(allHighscores);
     });
   }, []);
+
+//   const addScore = newScore => {
+//     addHighscores.addHighscores(newScore).then(savedScore => setHighscores([...highscores, savedScore]))
+//   }
+
+const eachHighScore = highscores.map(highscore => {
+  return highscore.highscore
+}
+)
+// this gets back an array of scores 
+console.log(eachHighScore)
+
+
+
+// when the game ends, the app should look to see if the current score is higher than the highscore that is being displayed and if it is, it should save the highscore to the database and update the highscore
+
 
   let highestScore;
   if (highscores.length) {
@@ -70,11 +89,41 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
     highestScore = 0;
   }
 
+  // if (eachHighScore[1] < highestScore) {
+  //   console.log(true)
+  // } else {
+  //   console.log(false)
+  // }
+
+
   if (!questions.length) return <Loading />;
 
   const incorrectAnswers = questions[0].incorrectAnswers;
   incorrectAnswers.push(questions[0].correctAnswer);
   const allAnswers = [...new Set(incorrectAnswers)].sort();
+
+
+  const addNewHighscore = (score) => {
+    const temp = highscores.map(s => s);
+    temp.push(score)
+    setHighscores(temp)
+    console.log(temp)
+ }
+
+  if (score > highestScore){
+    setNewHighscore(score)
+    console.log(newHighscore)
+    console.log("score is more than highscore", true)
+    postHighscores(newHighscore).then((score) => {
+      addNewHighscore(score)
+    })
+    } else {
+      console.log("score is less than highscore")
+    }
+
+
+  // //////////////
+
 
   const numberVariants = {
     initial: { y: 0 },
@@ -86,7 +135,6 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
       y: 0,
     },
   };
-
 
 
   return (
@@ -155,7 +203,7 @@ export default function QuizContainer({ data, gameEnded, setGameEnded, setStartG
 
         <div>
           <Timer
-            duration={30}
+            duration={60}
             gameEnded={gameEnded}
             setGameEnded={setGameEnded}
           />

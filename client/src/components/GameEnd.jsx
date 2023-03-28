@@ -6,6 +6,7 @@ export default function GameEnd({ setStartGame }) {
     setStartGame(false);
   }
 
+
   return (
     <div className="game-over-container">
         <div className="game-over">
