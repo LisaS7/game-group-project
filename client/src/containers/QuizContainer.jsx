@@ -23,7 +23,7 @@ export default function QuizContainer({
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [duration, setDuration] = useState(30);
+  const [duration, setDuration] = useState(60);
   const [timerStarted, setTimerStarted] = useState(true)
 
 
