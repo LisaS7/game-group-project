@@ -56,14 +56,14 @@
   position: absolute;
   bottom: 10rem;
   left: 25vw;
-  width: 350px;
+  width: 550px;
 }
 
 .end-speech-bubble {
   position: absolute;
-  bottom: 55vh;
-  left: 34vw;
-  width: 350px;
+  bottom: 58vh;
+  left: 40vw;
+  width: 450px;
 }
 
 .alien {

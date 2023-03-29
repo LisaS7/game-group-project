@@ -50,12 +50,12 @@
     background-image:  linear-gradient(to right, #89216B, #DA4453);
     color: #fff;
     cursor: pointer;
-    height: 48px;
+    height: 54px;
     font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 19px;
+    font-size: 24px;
     line-height: 1;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
     transition: box-shadow .15s,transform .15s;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .btn-size {
-    width: 250px;
+    width: 300px;
 }
 
 .btn-color {
