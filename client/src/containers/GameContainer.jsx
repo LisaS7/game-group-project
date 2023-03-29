@@ -10,7 +10,7 @@ export default function GameContainer() {
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [startGame, setStartGame] = useState(false);
-  const [gameEnded, setGameEnded] = useState(true);
+  const [gameEnded, setGameEnded] = useState(false);
   const [score, setScore] = useState(0);
   const [highscores, setHighscores] = useState([]);
 
@@ -25,8 +25,8 @@ export default function GameContainer() {
 
   useEffect(() => {
     getData();
-    console.log(category)
-    console.log(difficulty)
+    console.log(category);
+    console.log(difficulty);
   }, [category, difficulty]);
 
   //  BACKEND SCORE DATA SECTION
