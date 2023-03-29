@@ -45,7 +45,7 @@
 
 .menu-btn {
     box-sizing: border-box;
-    border: 0;
+    border: solid 2px #89216b51;
     border-radius: 6px;
     background-image:  linear-gradient(to right, #89216B, #DA4453);
     color: #fff;
@@ -59,9 +59,9 @@
     transition: box-shadow .15s,transform .15s;
 }
 
-.menu-btn:hover,.menu-btn:active, .menu-btn:focus {
-    border: white solid;
-} 
+.menu-btn:hover {
+    border: white solid 2px;
+}
 
 .btn-size {
     width: 250px;
@@ -85,9 +85,9 @@
     width: 100px;
 }
 
-.active {
+/* .active {
     border: white solid;
-}
+} */
 
 .background-green {
     background-color: green;
