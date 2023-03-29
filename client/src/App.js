@@ -1,17 +1,21 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
 import MusicPlayer from "./components/Music/MusicPlayer";
-import sideCurtains from "./components/Intro/side_curtains.png";
 import fullCurtain from "./components/Intro/curtain-full.png";
 import startShow from "./components/Intro/start-show-button.png";
 
 const startButtonVariants = {
   initial: { scale: 0 },
-  animate: { scale: 1, transition: { duration: 1, delay: 0.5 } },
+  animate: { scale: 1, transition: { duration: 1, delay: 0.75 } },
+};
+
+const curtainVariants = {
+  initial: { y: "-100vh" },
+  animate: { y: 0, transition: { duration: 1 } },
 };
 
 function App() {
@@ -25,6 +29,7 @@ function App() {
   const toggleIntro = () => {
     setIntro(!intro);
   };
+
   const handleClick = () => {
     togglePlay();
     setTimeout(() => {
@@ -43,8 +48,14 @@ function App() {
           />
         ) : (
           <>
-            <img className="side-curtains" src={sideCurtains} />
-            <img className="full-curtain" src={fullCurtain} />
+            <motion.img
+              key="fullcurtain"
+              className="full-curtain"
+              initial="initial"
+              animate="animate"
+              variants={curtainVariants}
+              src={fullCurtain}
+            />
             <motion.img
               initial="initial"
               animate="animate"
