@@ -19,7 +19,12 @@ const speechVariants = {
 
 const buttonVariants = {
   initial: { opacity: 0, rotate: 360 },
-  animate: { opacity: 1, rotate: 0, transition: { duration: 1, delay: 4 } },
+  animate: {
+    opacity: 1,
+    rotate: 0,
+    y: [0, 10, 0],
+    transition: { duration: 1, delay: 4, y: { repeat: Infinity } },
+  },
 };
 
 export default function Intro({ setIntro, handleClick, isPlaying }) {

@@ -10,7 +10,15 @@ import startShow from "./components/Intro/start-show-button.png";
 
 const startButtonVariants = {
   initial: { scale: 0 },
-  animate: { scale: 1, transition: { duration: 1, delay: 0.75 } },
+  animate: {
+    scale: 1,
+    y: [0, 25, 0],
+    transition: {
+      delay: 0.75,
+      scale: { duration: 1 },
+      y: { repeat: Infinity, duration: 1.5 },
+    },
+  },
 };
 
 const curtainVariants = {
