@@ -85,6 +85,9 @@
     width: 100px;
 }
 
+.btn-container {
+    margin-top: 10rem;
+}
 /* .active {
     border: white solid;
 } */
