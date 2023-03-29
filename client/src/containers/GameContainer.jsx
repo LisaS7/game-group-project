@@ -15,9 +15,10 @@ export default function GameContainer() {
   const [highscores, setHighscores] = useState([]);
 
   async function getData() {
+    const urlCategory = category.toLowerCase().replace(/ /g, "_");
     const url = `https://the-trivia-api.com/api/questions?${
-      category && `categories=${category}`
-    }&limit=50&${difficulty && `difficulty=${difficulty}`}`;
+      category && `categories=${urlCategory}`
+    }&limit=50&${difficulty && `difficulty=${difficulty.toLowerCase()}`}`;
     const response = await fetch(url);
     const jsonData = await response.json();
     setData(jsonData);
