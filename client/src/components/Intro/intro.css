@@ -14,16 +14,18 @@
 .host {
     position: absolute;
     bottom: 5rem;
+    right: 37vw;
 }
 
 .speech-bubble-container {
     position: absolute;
-    left: 45vw;
-    bottom: 48vh;
+    width: 20rem;
+    left: 43vw;
+    bottom: 41vh;
 }
 
 .speech-bubble {
-    width: 300px;
+    width: 450px;
 }
 
 .intro-button {
@@ -83,7 +85,7 @@
     }
 }
 
-@media only screen and (max-width: 1920px) {
+@media only screen and (max-width: 1900px) {
     .host {
         width: 300px;
         bottom: 2vh;

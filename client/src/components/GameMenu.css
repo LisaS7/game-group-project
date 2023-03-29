@@ -15,8 +15,8 @@
     line-height: 1;
     list-style: none;
     overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 2rem;
+    padding-right: 2rem;
     position: relative;
     text-align: left;
     text-decoration: none;
@@ -26,7 +26,7 @@
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
-    font-size: 18px;
+    font-size: 1.5rem;
 }
 
 .start-quiz-btn:focus {

@@ -3,6 +3,23 @@
   color: #fff;
 }
 
+.app-container {
+  position: relative;
+}
+
+.side-curtains {
+  width: 100vw;
+  height: 100vh;
+}
+
+.start-app-button {
+  position: absolute;
+  bottom: 50vh;
+  left: 47vw;
+  font-size: 3rem;
+  height: 6rem;
+}
+
 /* LOGO - MIND BLANK */
 @import url(//fonts.googleapis.com/css?family=Vibur);
 
@@ -24,11 +41,6 @@ body {
   margin: auto;
   margin-top: 5rem;
   margin-bottom: 6rem;
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   user-select: none;
 }
 
@@ -45,6 +57,10 @@ body {
 
 .logo b span:nth-of-type(2){
   animation: blink linear infinite 3s;
+}
+
+.btn-container {
+  margin-top: 20rem;
 }
 
 @keyframes blink {
