@@ -1,34 +1,30 @@
 import { useState, useRef, useEffect } from "react";
 import { backgroundMusicVolume } from "../../constants";
-import backgroundMusic from "./background.mp3";
+import gameMusic from "./game.mp3";
 import "./MusicPlayer.css";
 
 export default function MusicPlayer({ intro }) {
-  const song = useRef(new Audio(backgroundMusic));
+  const song = useRef(new Audio(gameMusic));
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(backgroundMusicVolume);
-
 
   useEffect(() => {
     song.current.loop = true;
     song.current.volume = volume;
   }, [volume]);
 
-
   function handleVolumeChange(e) {
     setVolume(e.target.value);
   }
 
-
   useEffect(() => {
     song.current.loop = true;
     isPlaying ? song.current.pause() : song.current.play();
-  },[isPlaying, []])
+  }, [isPlaying, []]);
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
-  }
-
+  };
 
   function handleVolumeChange(e) {
     setVolume(e.target.value);
@@ -57,4 +53,3 @@ export default function MusicPlayer({ intro }) {
     </div>
   );
 }
-

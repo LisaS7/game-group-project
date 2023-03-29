@@ -4,7 +4,6 @@ import "./App.css";
 import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
 import MusicPlayer from "./components/Music/MusicPlayer";
-import backgroundMusic from "./components/Music/background.mp3";
 import sideCurtains from "./components/Intro/side_curtains.png";
 
 function App() {
