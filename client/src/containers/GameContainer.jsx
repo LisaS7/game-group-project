@@ -25,8 +25,6 @@ export default function GameContainer() {
 
   useEffect(() => {
     getData();
-    console.log(category);
-    console.log(difficulty);
   }, [category, difficulty]);
 
   //  BACKEND SCORE DATA SECTION

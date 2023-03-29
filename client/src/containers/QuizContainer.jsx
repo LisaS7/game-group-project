@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-
 import Answer from "../components/Answer";
 import Question from "../components/Question";
-import { answerDelay, correctAlien, incorrectAlien } from "../constants";
+import {
+  answerDelay,
+  scoreValue,
+  correctAlien,
+  incorrectAlien,
+} from "../constants";
 import Timer from "../components/Timer";
 import Loading from "../components/Loading";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
@@ -18,14 +22,14 @@ export default function QuizContainer({
   highestScore,
   score,
   setScore,
-  setCategory
+  setCategory,
 }) {
   const [questions, setQuestions] = useState([]);
   const [displayAnswer, setDisplayAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [duration, setDuration] = useState(60);
-  const [timerStarted, setTimerStarted] = useState(true)
-
+  const [timerStarted, setTimerStarted] = useState(true);
+  const [previousScore, setPreviousScore] = useState(0);
 
   function questionAnswered() {
     setDisplayAnswer(true);
@@ -36,10 +40,11 @@ export default function QuizContainer({
   }
 
   function correctAnswer() {
+    const questionDifficulty = questions[0].difficulty;
+    const points = scoreValue[questionDifficulty];
     setIsCorrect(true);
-    // add points to score
-    setScore(score + 1);
-    // post new score to db (waiting on function for game ending)
+    setPreviousScore(score);
+    setScore(score + points);
   }
 
   function handleReturn() {
@@ -52,8 +57,7 @@ export default function QuizContainer({
     setQuestions(data);
     getData();
 
-    setTimerStarted(!timerStarted)
-
+    setTimerStarted(!timerStarted);
   }
 
   useEffect(() => {
@@ -91,7 +95,7 @@ export default function QuizContainer({
       <div className="scores-container">
         <p className="score">Highscore {highestScore}</p>
         <div>
-          Score{" "}
+          Score{" $"}
           <div className="score-numbers">
             <motion.p
               className="score"
@@ -99,7 +103,7 @@ export default function QuizContainer({
               animate={isCorrect ? "correct" : "incorrect"}
               variants={numberVariants}
             >
-              {isCorrect ? score - 1 : score}
+              {isCorrect ? previousScore : score}
             </motion.p>
             <motion.p
               className="score"
