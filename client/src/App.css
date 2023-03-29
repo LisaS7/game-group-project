@@ -59,9 +59,9 @@ body {
   animation: blink linear infinite 3s;
 }
 
-.btn-container {
+/* .btn-container {
   margin-top: 20rem;
-}
+} */
 
 @keyframes blink {
   78% {
