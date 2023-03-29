@@ -5,9 +5,14 @@ import "./GameMenu.css";
 import { Capitalise } from "../utils/capitalise";
 let selectedCategories = [];
 
-const animateButtonVariants = {
+const menuVariants = {
   initial: { scale: 0, x: "10vw" },
-  animate: { scale: 1, x: 0, transition: { duration: 1, delay: 0.5 } },
+  animate: { scale: 1, x: 0, transition: { duration: 1 } },
+};
+
+const subMenuVariants = {
+  visible: { scale: 1 },
+  hidden: { scale: 0 },
 };
 
 const startButtonVariants = {
@@ -50,18 +55,24 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
   }
 
   const categoryElements = categories.map((category, index) => (
-    <button
+    <motion.button
+      initial="hidden"
+      whileInView="visible"
+      variants={subMenuVariants}
       className="menu-btn btn-color btn-category"
       key={index}
       onClick={(e) => handleClick(e)}
     >
       {Capitalise(category.replaceAll("_", " "))}
-    </button>
+    </motion.button>
   ));
 
   const difficultyElements = difficulties.map((difficulty, index) => (
-    <button
+    <motion.button
       className="menu-btn btn-color btn-size"
+      initial="hidden"
+      whileInView="visible"
+      variants={subMenuVariants}
       key={index}
       onClick={(e) => {
         handleDifficulty(e);
@@ -70,7 +81,7 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
       }}
     >
       {Capitalise(difficulty)}
-    </button>
+    </motion.button>
   ));
 
   const handleHiddenCategory = () => {
@@ -94,7 +105,7 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
         <motion.button
           className="menu-btn btn-size"
           onClick={handleHiddenCategory}
-          variants={animateButtonVariants}
+          variants={menuVariants}
         >
           Select Category
         </motion.button>
@@ -106,7 +117,7 @@ export function GameMenu({ setStartGame, setCategory, setDifficulty }) {
         <motion.button
           className="menu-btn btn-size"
           onClick={handleHiddenDifficulty}
-          variants={animateButtonVariants}
+          variants={menuVariants}
         >
           Select Difficulty
         </motion.button>
