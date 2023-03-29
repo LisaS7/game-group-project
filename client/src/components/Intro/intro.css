@@ -82,3 +82,16 @@
         left: 13rem;
     }
 }
+
+@media only screen and (max-width: 1920px) {
+    .host {
+        width: 300px;
+        bottom: 2vh;
+    }
+
+    .speech-bubble-container {
+        bottom: 55vh;
+        left: 34vw;
+    }
+
+}
