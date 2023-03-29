@@ -97,8 +97,6 @@
 }
 
 @media only screen and (max-width: 1024px) {
-
-
   .end-host {
     width: 200px;
   }
@@ -116,4 +114,26 @@
   #lottie {
     width: 250px !important;
   }
+}
+
+@media only screen and (max-width: 1920px) {
+  .end-host {
+    width:200px;
+  }
+
+  .end-speech-bubble {
+    width: 250px;
+    bottom: 52vh;
+    left: 63vh;
+  }
+
+  .alien {
+    margin: 0;
+  }
+
+  #lottie {
+    width: 250px !important;
+  }
+
+
 }
