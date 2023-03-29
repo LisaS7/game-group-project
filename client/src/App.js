@@ -49,7 +49,6 @@ function App() {
         ) : (
           <>
             <motion.img
-              key="fullcurtain"
               className="full-curtain"
               initial="initial"
               animate="animate"

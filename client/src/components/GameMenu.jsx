@@ -11,7 +11,7 @@ const animateButtonVariants = {
 };
 
 const startButtonVariants = {
-  initial: { scale: 0, y: "50vh" },
+  initial: { scale: 0, y: "60vh" },
   animate: {
     scale: [1, 1.1, 1],
     y: 0,
