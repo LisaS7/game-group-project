@@ -18,13 +18,13 @@ export default function Answer({
   const wrongAudio = new Audio(incorrectAnswerAudio);
 
   const handleAnswer = function (e) {
-    questionAnswered();
     if (e.target.textContent === correct) {
       correctAnswer();
       correctAudio.play();
     } else {
       wrongAudio.play();
     }
+    questionAnswered();
   };
 
   const answerElements = allAnswers.map((answer, index) => (

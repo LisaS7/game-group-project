@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { winScore } from "../../constants";
 import hostCrayons from "./host_crayons.png";
 import hostTrophy from "./host_trophy.png";
 import speechBubbleLose1 from "./LoseSpeech1.png";
@@ -33,7 +34,7 @@ export default function GameEnd({
   setGameEnded,
   setScore,
   score,
-  getData
+  getData,
 }) {
   function handleClick() {
     setStartGame(false);
@@ -43,7 +44,7 @@ export default function GameEnd({
   }
 
   let hostImage, speechBubble1, speechBubble2, alien;
-  if (score > 4) {
+  if (score > winScore) {
     hostImage = hostTrophy;
     speechBubble1 = speechBubbleWin1;
     speechBubble2 = speechBubbleWin2;
@@ -59,7 +60,7 @@ export default function GameEnd({
     <div className="game-over-container">
       <div className="game-over">
         <h1>Game Over</h1>
-        <h3>You scored {score}</h3>
+        <h3>You won ${score}</h3>
         <motion.div initial="initial" animate="animate">
           <motion.img
             variants={hostVariants}
