@@ -8,16 +8,21 @@
 }
 
 .side-curtains {
+  position: absolute;
   width: 100vw;
   height: 100vh;
 }
 
+.full-curtain {
+  width: 100vw;
+height: 100vh;
+}
+
 .start-app-button {
   position: absolute;
-  bottom: 50vh;
-  left: 47vw;
-  font-size: 3rem;
-  height: 6rem;
+  bottom: 35vh;
+  left: 43vw;
+  height: 40rem;
 }
 
 /* LOGO - MIND BLANK */

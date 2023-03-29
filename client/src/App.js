@@ -5,6 +5,8 @@ import Intro from "./components/Intro/Intro";
 import GameContainer from "./containers/GameContainer";
 import MusicPlayer from "./components/Music/MusicPlayer";
 import sideCurtains from "./components/Intro/side_curtains.png";
+import fullCurtain from "./components/Intro/curtain-full.png";
+import startShow from "./components/Intro/start-show-button.png";
 
 function App() {
   const [intro, setIntro] = useState(true);
@@ -27,14 +29,6 @@ function App() {
   if (intro) {
     return (
       <div className="app-container">
-        <button
-          className="start-app-button"
-          onClick={() => {
-            setStart(true);
-          }}
-        >
-          Start the Show
-        </button>
         {start ? (
           <Intro
             setIntro={setIntro}
@@ -42,7 +36,18 @@ function App() {
             isPlaying={isPlaying}
           />
         ) : (
-          <img className="side-curtains" src={sideCurtains} />
+          <>
+            <img className="side-curtains" src={sideCurtains} />
+            <img className="full-curtain" src={fullCurtain} />
+            <img
+              className="start-app-button"
+              src={startShow}
+              alt="start show button"
+              onClick={() => {
+                setStart(true);
+              }}
+            />
+          </>
         )}
       </div>
     );
