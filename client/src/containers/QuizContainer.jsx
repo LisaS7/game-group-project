@@ -49,6 +49,7 @@ export default function QuizContainer({
 
   function handleReturn() {
     setStartGame(false);
+    setScore(0);
     getData();
   }
 
