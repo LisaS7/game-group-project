@@ -9,26 +9,27 @@ import backgroundMusic from "../Music/intro.mp3";
 
 const hostVariants = {
   initial: { x: "50vw" },
-  animate: { x: 0, transition: { duration: 2, delay: 0.5 } },
+  animate: { x: 0, transition: { duration: 2, delay: 0.75 } },
 };
 
 const speechVariants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 1, delay: 2.5 } },
+  animate: { opacity: 1, transition: { duration: 1, delay: 2.75 } },
 };
 
 const buttonVariants = {
-  initial: { opacity: 0, rotate: 360 },
+  initial: { scale: 0, rotate: 720 },
   animate: {
-    opacity: 1,
+    scale: 1,
     rotate: 0,
     y: [0, 10, 0],
-    transition: { duration: 1, delay: 4, y: { repeat: Infinity } },
+    transition: { duration: 2, delay: 4, y: { repeat: Infinity } },
   },
 };
 
 export default function Intro({ setIntro, handleClick, isPlaying }) {
   const song = useRef(new Audio(backgroundMusic));
+  song.current.volume = 0.1;
 
   useEffect(() => {
     isPlaying ? song.current.pause() : song.current.play();

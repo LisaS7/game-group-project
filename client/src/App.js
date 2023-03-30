@@ -14,7 +14,7 @@ const startButtonVariants = {
     scale: 1,
     y: [0, 25, 0],
     transition: {
-      delay: 0.75,
+      delay: 1.25,
       scale: { duration: 1 },
       y: { repeat: Infinity, duration: 1.5 },
     },
@@ -23,7 +23,7 @@ const startButtonVariants = {
 
 const curtainVariants = {
   initial: { y: "-100vh" },
-  animate: { y: 0, transition: { duration: 1 } },
+  animate: { y: 0, transition: { duration: 2 } },
 };
 
 function App() {
