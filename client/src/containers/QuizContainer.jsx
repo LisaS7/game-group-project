@@ -94,7 +94,7 @@ export default function QuizContainer({
         <button onClick={handleReset}>Reset</button>
       </div>
       <div className="scores-container">
-        <p className="score">Highscore {highestScore}</p>
+        <p className="score">Highscore ${highestScore}</p>
         <div>
           Score{" $"}
           <div className="score-numbers">
