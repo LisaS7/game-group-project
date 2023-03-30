@@ -20,8 +20,8 @@
 .speech-bubble-container {
     position: absolute;
     width: 20rem;
-    left: 43vw;
-    bottom: 41vh;
+    left: 40vw;
+    bottom: 50vh;
 }
 
 .speech-bubble {
@@ -29,10 +29,10 @@
 }
 
 .intro-button {
-    width: 350px;
+    width: 300px;
     position: absolute;
-    bottom: 8rem;
-    left: 38vw;
+    bottom: 7rem;
+    left: 35vw;
 }
 
 @media only screen and (max-width: 600px) {

@@ -54,22 +54,22 @@
 
 .end-host {
   position: absolute;
-  bottom: 10rem;
-  left: 25vw;
-  width: 550px;
+  bottom: 10vh;
+  left: 15vw;
+  width: 450px;
 }
 
 .end-speech-bubble {
   position: absolute;
-  bottom: 58vh;
-  left: 40vw;
-  width: 450px;
+  bottom: 63vh;
+  left: 27vw;
+  width: 400px;
 }
 
 .alien {
   margin: 10rem;
   position: absolute;
-  right: 25vw;
+  right: 20vw;
   bottom: 7vh;
 }
 
